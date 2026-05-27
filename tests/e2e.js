@@ -84,7 +84,12 @@ async function run() {
   try {
     // ── 1. Index page basics ────────────────────────────────────────────────
     section("1. Index page (desktop, no Stripe set)");
-    const page = await newPage(browser);
+    const page = await newPage(browser, {
+      // Suppress the Stripe banner in capture-only contexts so fullPage
+      // screenshots don't duplicate the position:fixed bar at every tile
+      // boundary. The banner-tested assertion below uses a separate page.
+      initScript: () => sessionStorage.setItem("dismissed-stripe-banner", "1"),
+    });
     const t0 = Date.now();
     const resp = await page.goto(BASE, { waitUntil: "networkidle", timeout: 30000 });
     const loadMs = Date.now() - t0;
@@ -96,9 +101,14 @@ async function run() {
     const h1 = await page.locator("h1").first().innerText();
     h1.length > 10 ? ok("H1 has content", `${h1.length} chars`) : bad("H1 missing", h1);
 
-    const stripeBanner = page.locator("#stripe-banner");
-    const bannerVisible = await stripeBanner.isVisible().catch(() => false);
-    bannerVisible ? ok("Stripe placeholder banner shows") : bad("Stripe banner missing");
+    // Use a fresh page (no sessionStorage dismissal) to assert the banner appears.
+    {
+      const bannerPage = await newPage(browser);
+      await bannerPage.goto(BASE, { waitUntil: "domcontentloaded" });
+      const bv = await bannerPage.locator("#stripe-banner").isVisible({ timeout: 3000 }).catch(() => false);
+      bv ? ok("Stripe placeholder banner shows (clean session)") : bad("Stripe banner missing");
+      await bannerPage.close();
+    }
 
     // Bytes
     const html = await page.content();
