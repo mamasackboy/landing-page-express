@@ -157,7 +157,6 @@ h1 em {
 /* ─── Sections ────────────────────────────────────────────────────────────── */
 section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
 section:last-of-type { border-bottom: 0; }
-section > h2 { animation: fade-up 800ms cubic-bezier(0.22, 0.68, 0, 1) backwards; }
 
 h2 {
   font-family: var(--serif);
@@ -356,11 +355,18 @@ footer {
 ::selection { background: var(--accent); color: #000; }
 
 /* ─── Animations ──────────────────────────────────────────────────────────── */
+/*
+ * Use `both` fill-mode (NOT `backwards`) so the final keyframe state sticks
+ * after the animation finishes. With `backwards`, elements snap back to their
+ * pre-animation CSS — which was opacity:0 in earlier versions and made entire
+ * sections invisible. `both` = backwards + forwards.
+ */
 @keyframes fade-up {
   0% { opacity: 0; transform: translate3d(0, 16px, 0); filter: blur(6px); }
   60% { filter: blur(0); }
   100% { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); }
 }
+.eyebrow, h1, .lede, .cta-row, .proof { animation-fill-mode: both !important; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

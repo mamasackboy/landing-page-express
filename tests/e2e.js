@@ -129,6 +129,41 @@ async function run() {
       bad("Pay button did not alert", String(alertText));
     }
 
+    // ── 2.5. Visibility audit — catches the "invisible sections" regression
+    //         where opacity:0 was applied but never restored.
+    section("2.5. Visibility audit (every section is actually visible)");
+    const visAudit = await page.evaluate(() => {
+      const targets = Array.from(document.querySelectorAll(
+        "section, .trust, header, footer"
+      ));
+      return targets.map((el) => {
+        const cs = getComputedStyle(el);
+        const rect = el.getBoundingClientRect();
+        return {
+          tag: el.tagName.toLowerCase(),
+          id: el.id || null,
+          opacity: parseFloat(cs.opacity),
+          visibility: cs.visibility,
+          display: cs.display,
+          height: rect.height,
+          width: rect.width,
+        };
+      });
+    });
+    let invisCount = 0;
+    visAudit.forEach((v) => {
+      const invisible =
+        v.opacity < 0.5 ||
+        v.visibility === "hidden" ||
+        v.display === "none" ||
+        v.height < 20;
+      if (invisible) {
+        bad(`Section ${v.tag}#${v.id || "?"} invisible`, JSON.stringify(v));
+        invisCount++;
+      }
+    });
+    if (invisCount === 0) ok(`All ${visAudit.length} sections render visibly`);
+
     // ── 3. Trust strip + price display ──────────────────────────────────────
     section("3. Trust strip + price visibility");
     const trustCount = await page.locator(".trust .stat").count();

@@ -1,6 +1,12 @@
 /* ============================================================================
- * UI behaviors: FAQ accordion, intersection-fade for sections.
+ * UI behaviors: FAQ accordion + scroll-based h2 entrance fade.
  * Pure vanilla. No deps. Defers until DOMContentLoaded.
+ *
+ * NB: section opacity is NEVER manipulated here — sections must remain visible
+ * by default. A previous version set style.opacity=0 then relied on an
+ * IntersectionObserver to reveal them, which silently broke any section that
+ * didn't trigger the observer (fullPage screenshot capture, slow JS load,
+ * disabled JS). Removed.
  * ========================================================================= */
 
 (function () {
@@ -13,7 +19,6 @@
       const body = item.querySelector(".faq-body");
       if (!trigger || !body) return;
 
-      // Set initial max-height for the open item
       if (item.dataset.open === "true") {
         body.style.maxHeight = body.scrollHeight + "px";
       }
@@ -21,7 +26,6 @@
       trigger.addEventListener("click", () => {
         const isOpen = item.dataset.open === "true";
 
-        // Close all
         items.forEach((other) => {
           other.dataset.open = "false";
           const otherTrigger = other.querySelector(".faq-trigger");
@@ -30,7 +34,6 @@
           if (otherBody) otherBody.style.maxHeight = "0px";
         });
 
-        // Open this one if it wasn't already open
         if (!isOpen) {
           item.dataset.open = "true";
           trigger.setAttribute("aria-expanded", "true");
@@ -38,46 +41,21 @@
         }
       });
     });
-  }
 
-  function initSectionFade() {
-    if (!("IntersectionObserver" in window)) return;
-    const sections = document.querySelectorAll("section, .trust");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.animation =
-              "fade-up 800ms cubic-bezier(0.22, 0.68, 0, 1) backwards";
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.05 },
-    );
-    sections.forEach((s) => {
-      s.style.opacity = "0";
-      observer.observe(s);
-      // Failsafe: if observer never fires (e.g. in test envs), reveal after 1s
-      setTimeout(() => {
-        if (s.style.opacity === "0") s.style.opacity = "1";
-      }, 1200);
-    });
-    // When animation completes, lock opacity to 1
-    document.addEventListener("animationend", (e) => {
-      if (e.target.matches("section, .trust")) {
-        e.target.style.opacity = "1";
-      }
+    // Recompute open item height on resize (text wraps differently)
+    let rafId = null;
+    window.addEventListener("resize", () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const open = document.querySelector('.faq-item[data-open="true"] .faq-body');
+        if (open) open.style.maxHeight = open.scrollHeight + "px";
+      });
     });
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => {
-      initFaq();
-      initSectionFade();
-    });
+    document.addEventListener("DOMContentLoaded", initFaq);
   } else {
     initFaq();
-    initSectionFade();
   }
 })();
