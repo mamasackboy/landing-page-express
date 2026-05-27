@@ -25,7 +25,7 @@ I build small business landing pages — same day, $99 flat.
 
 **Stack:** React + Tailwind + Vercel. Hand-coded, not Wix.
 
-**Portfolio + payment link:** [YOUR-URL-HERE]
+**Portfolio + payment link:** https://mamasackboy.github.io/landing-page-express/
 
 Backup offer if you don't need a full site:
 - **Resume/CV redesign** — $39, delivered in 4 hours, modern ATS-friendly layout, Word + PDF.

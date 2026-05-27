@@ -1,116 +1,117 @@
-# Money Day — Operations Manual
+# Landing Page Express — Money-Day Kit
 
-Your goal: $50-200 today, cold-start, $0 budget.
+**Goal:** $50–$200 today, cold-start, $0 budget.
+**Strategy:** One productized offer (`$99 landing page in 24 hours`), deployed and posted into 4 buyer channels.
 
-This folder contains everything you need to make that happen. Files in **execution order**:
+The site is live at **https://mamasackboy.github.io/landing-page-express/** and the repo is **https://github.com/mamasackboy/landing-page-express**.
+
+---
+
+## 🚦 To go live, do this one thing
+
+Open **`config.js`** (top of the repo). Paste your Stripe Payment Link into the first line:
+
+```js
+STRIPE_LINK: "https://buy.stripe.com/YOUR_LINK_HERE",
+```
+
+Save, then:
+
+```bash
+git add config.js && git commit -m "live" && git push
+```
+
+GitHub Pages re-deploys in 1–2 minutes. That's it. **You are open for business.**
+
+> Don't have a Stripe link yet? Get one in 60 seconds at
+> https://dashboard.stripe.com/payment-links — set price to $99, name it
+> "Landing Page Express," and copy the resulting `https://buy.stripe.com/...` URL.
+
+A yellow banner appears on every page while the placeholder is in place, so you can't accidentally ship broken payment buttons.
+
+---
+
+## What's in this repo
 
 ```
 money-day/
-├── PLAYBOOK.md                 ← read first, hour-by-hour timeline
-├── offer.html                  ← your sales page, deploy to Vercel
-├── portfolio/
-│   ├── dogwalker.html         ← sample 1, deploy and screenshot for proof
-│   └── pilates.html           ← sample 2, deploy and screenshot for proof
-├── posts/
-│   ├── 1-reddit-forhire.md    ← copy-paste, post on r/forhire
-│   ├── 2-upwork-proposal.md   ← template for 10 personalized proposals
-│   ├── 3-reddit-slavelabour-cv.md  ← backup $39 CV gig for volume
-│   ├── 4-linkedin-dm.md       ← feed post + 10 cold DMs
-│   └── 5-intake-and-delivery.md  ← post-sale scripts
-└── README.md                   ← you are here
+├── config.js                ← THE ONE FILE YOU EDIT (Stripe link goes here)
+├── index.html               ← Sales page (the live URL above)
+├── thanks.html              ← Post-purchase intake form (3 questions → your email)
+├── thanks-submitted.html    ← Confirmation page after intake is sent
+├── styles.css               ← Shared styles for the sales pages
+├── favicon.svg              ← Brand mark
+├── og-image.svg             ← Social share card (Twitter/LinkedIn unfurls)
+├── samples/
+│   ├── dogwalker/index.html ← Portfolio sample #1 (Brooklyn dog-walking biz)
+│   └── pilates/index.html   ← Portfolio sample #2 (Hudson NY pilates studio)
+├── posts/                   ← Copy-paste templates for buyer channels
+│   ├── 1-reddit-forhire.md
+│   ├── 2-upwork-proposal.md
+│   ├── 3-reddit-slavelabour-cv.md
+│   ├── 4-linkedin-dm.md
+│   └── 5-intake-and-delivery.md
+├── PLAYBOOK.md              ← Hour-by-hour timeline for today
+├── sitemap.xml              ← SEO
+├── robots.txt               ← SEO
+├── vercel.json              ← Optional Vercel config (not used — GH Pages only)
+├── netlify.toml             ← Optional Netlify config
+└── .nojekyll                ← Tells GH Pages not to run Jekyll
 ```
 
 ---
 
-## Quickstart — first 60 minutes
+## Hour-by-hour today
 
-### 1. Set up payment (5 min)
+See **`PLAYBOOK.md`** for the full timeline. Short version:
 
-Go to **https://dashboard.stripe.com/payment-links** → "New" → set $99 → name it "Landing Page Express." Copy the link.
+1. **Now:** Edit `config.js` → paste Stripe link → push.
+2. **Hour 1:** Post on r/forhire and r/slavelabour (`posts/1-reddit-forhire.md`, `posts/3-reddit-slavelabour-cv.md`).
+3. **Hour 1–2:** Send 10 Upwork proposals (`posts/2-upwork-proposal.md`).
+4. **Hour 2:** LinkedIn feed post + 5 cold DMs (`posts/4-linkedin-dm.md`).
+5. **Hour 2–8:** Refresh inboxes every 20 min. Reply within 5 min — speed kills.
+6. **First sale:** Open `posts/5-intake-and-delivery.md` — copy-paste the intake confirmation.
+7. **Hours 4–24:** Build and ship the site.
 
-If you don't have Stripe yet, fastest alternatives:
-- **PayPal.me/[yourname]** — instant, just append `/99` to the URL
-- **Stripe Atlas** if you don't have a business — skip, takes too long
-- **Buy Me a Coffee** — set custom amount, works in minutes
+---
 
-### 2. Deploy the offer page (10 min)
+## How the intake form works
 
-Replace `https://buy.stripe.com/REPLACE_ME` in `offer.html` with your payment link (2 occurrences). Then deploy.
+When someone pays via Stripe, set the Stripe Payment Link's **success URL** to:
 
-**Option A — Vercel (recommended):**
-```powershell
-cd C:\Users\drama\money-day
-npx vercel --prod
 ```
-Choose defaults. You'll get a URL like `money-day-xxx.vercel.app`. Done.
+https://mamasackboy.github.io/landing-page-express/thanks.html
+```
 
-**Option B — Netlify Drop (no CLI):**
-1. Zip the `money-day` folder
-2. Go to https://app.netlify.com/drop
-3. Drag the zip in
-4. Get a URL instantly
+The buyer lands on `thanks.html`, fills 3 short questions, and submits. The form posts to **Formsubmit.co** which forwards every submission to `gabbokbiz@gmail.com`. **First submission requires you to confirm the email address once** (Formsubmit sends you a confirmation link). After that, every order arrives in your inbox as a clean tabular email.
 
-**Option C — GitHub Pages:**
-Push to a new repo, Settings → Pages → enable on main branch.
-
-### 3. Deploy the two portfolio samples (10 min)
-
-Same as above, but you can deploy all three pages at once if you put them under the same folder. Vercel will serve `/portfolio/dogwalker.html` and `/portfolio/pilates.html` automatically.
-
-After deploy, take screenshots of each portfolio page on:
-- Desktop (1440px wide)
-- Mobile (375px wide)
-
-Save them to use as proof when responding to clients. Use **browser dev tools** → toggle device toolbar → screenshot.
-
-### 4. Update placeholders (5 min)
-
-In every `posts/*.md` file, replace `[YOUR-URL-HERE]` with your deployed Vercel URL.
-
-In `posts/5-intake-and-delivery.md`, replace `[STRIPE-PAYMENT-LINK]` with your Stripe link.
-
-### 5. Post (30 min)
-
-In this exact order:
-1. **LinkedIn feed post** (warmest channel, slowest to convert but free reach)
-2. **r/forhire** [FOR HIRE] post
-3. **r/slavelabour** [OFFER] post for the CV gig
-4. **Upwork** — 10 personalized proposals to fresh "landing page" jobs
-5. **LinkedIn DMs** — 5 in morning, 5 in afternoon
-
-Then keep refreshing each channel every 20 minutes for replies.
+Want a different inbox? Edit the `action="..."` attribute in `thanks.html` (line ~30) or change `CONTACT_EMAIL` in `config.js`.
 
 ---
 
-## The single most important thing
+## How to verify before going live
 
-**Reply to interest within 5 minutes.** Conversion drops ~50% for every 10 minutes you take to respond. Set your phone to ping for:
-- Reddit DMs
-- Upwork inbox
-- LinkedIn messages
-- Stripe payment notifications
+```bash
+# Spin up a local server
+cd /c/Users/drama/money-day
+python -m http.server 8000
+# Then open http://localhost:8000/
+```
 
-If you're not at your desk, set an out-of-office reply that says "back at 3pm, will reply then — payment link if you want to grab a slot: [link]" and leave the door open.
-
----
-
-## If you hit the goal
-
-Don't stop. Run the same playbook tomorrow. Each delivery generates a review or testimonial, and your conversion rate doubles by week two.
-
-## If you don't hit the goal
-
-The posts will keep getting views for 1-3 weeks. Most of your replies on r/forhire and Upwork will come in the 24-72 hours AFTER posting, not in the same hour. The funnel is built. Walk away and check it tomorrow.
-
-If after 3 days you still have zero leads, the diagnosis is one of:
-1. **Offer is wrong for the channels** — try the CV gig as primary, landing page as backup
-2. **Posts got buried** — re-post with a sharper title and a portfolio screenshot embedded
-3. **Trust deficit** — your portfolio page needs a real testimonial, even from a friend
+Click every CTA — without a real Stripe link, buttons show a friendly alert telling you to set it. Everything else (intake form, portfolio links, internal nav) works locally.
 
 ---
 
-## Files you can edit later
+## How to take it down
 
-- `offer.html` is hand-coded HTML/CSS in one file. Edit copy, colors, prices freely.
-- Portfolio samples are templates — once you deliver a real client site, **replace one of these with the real screenshot**. Real client work is 10x more credible than spec work.
-- The post templates are deliberately punchy. Don't soften them. "Confident and direct" outsells "humble and helpful" on every freelance channel.
+```bash
+gh repo delete mamasackboy/landing-page-express --yes
+```
+
+Or just disable Pages from repo Settings → Pages.
+
+---
+
+## When today is over
+
+The site keeps converting for weeks. Don't take it down unless you want to. Re-run the posts weekly and conversion rates double once you have a real testimonial to swap into a sample slot. Replace `samples/dogwalker/` or `samples/pilates/` with screenshots of real client work as soon as you deliver one — real client work is 10× more credible than spec.

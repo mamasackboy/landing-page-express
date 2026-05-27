@@ -29,7 +29,7 @@ I noticed you need a landing page for your [their business type — e.g. "yoga s
 
 **My process is intentionally minimal:** you accept this proposal, answer 3 quick questions (business name, what you sell, who buys it), and within 24 hours I send you a live URL plus 1 revision round.
 
-You can see two examples of work I've shipped in this format here: [YOUR-URL-HERE]
+You can see two examples of work I've shipped in this format here: https://mamasackboy.github.io/landing-page-express/
 
 If you want something with more pages or features, happy to quote separately — but for a single landing page, I'm confident this is the fastest, cleanest path to "live site" you'll find on Upwork.
 

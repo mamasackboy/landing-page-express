@@ -8,7 +8,7 @@ These are the messages you send AFTER someone says "I want it." Copy-paste, fill
 
 Send within 5 minutes of their reply. Speed = conversion.
 
-> Awesome. Here's the Stripe link — payment is fully refundable if I don't deliver: [STRIPE-PAYMENT-LINK]
+> Awesome. Here's the Stripe link — payment is fully refundable if I don't deliver: [paste your Stripe Payment Link here, or just send them to https://mamasackboy.github.io/landing-page-express/ to click the button]
 >
 > The moment that clears, reply to this message with:
 >

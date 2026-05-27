@@ -20,7 +20,7 @@ Send DMs in 2 waves: 5 in morning, 5 in afternoon. LinkedIn throttles aggressive
 >
 > Taking 2 orders today. DM "site" if you want one.
 >
-> [YOUR-URL-HERE]
+> https://mamasackboy.github.io/landing-page-express/
 
 **Posting tips:**
 - Post between 8-10am or 5-7pm your timezone (LinkedIn algorithm rewards engagement spikes)
@@ -54,7 +54,7 @@ Hey [First name] — saw your work at [Company]. Looked at your site and noticed
 
 ## Follow-up if no response (3 days later, NOT today)
 
-> Just bumping this — I have a slot open Wednesday if you want to grab it. URL: [link]
+> Just bumping this — I have a slot open Wednesday if you want to grab it. URL: https://mamasackboy.github.io/landing-page-express/
 
 That's it. Don't 3-touch on day 1, that's spammy and burns the contact.
 
