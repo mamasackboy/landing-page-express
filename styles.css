@@ -279,6 +279,7 @@ section {
 }
 
 section:last-of-type { border-bottom: 0; }
+section { content-visibility: auto; contain-intrinsic-size: auto 500px; }
 
 h2 {
   font-family: var(--serif);
