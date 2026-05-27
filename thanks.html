@@ -11,53 +11,53 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" />
   <style>
     .form-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 2rem; margin-top: 2rem;
+      background: var(--panel-strong); border: 1px solid var(--border-strong);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-radius: 20px; padding: 2rem; margin-top: 2rem;
+      box-shadow: var(--shadow-card);
     }
     .field { display: grid; gap: 0.4rem; margin-bottom: 1.25rem; }
-    .field label { font-size: 0.88rem; color: var(--muted); font-family: var(--mono); }
+    .field label { font-size: 0.84rem; color: var(--muted); font-family: var(--mono); letter-spacing: 0.04em; }
     .field input, .field textarea {
       font-family: inherit; font-size: 1rem;
-      background: #0a0a0a; color: var(--fg);
-      border: 1px solid var(--border-strong); border-radius: 10px;
-      padding: 0.85rem 1rem; width: 100%;
+      background: rgba(0,0,0,0.4); color: var(--fg);
+      border: 1px solid var(--border-strong); border-radius: 12px;
+      padding: 0.9rem 1.1rem; width: 100%;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
     .field input:focus, .field textarea:focus {
       outline: 0; border-color: var(--accent);
       box-shadow: 0 0 0 3px var(--accent-soft);
     }
     .field textarea { resize: vertical; min-height: 90px; }
-    .success { background: #10b98115; border: 1px solid #10b981; color: #10b981; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; }
+    .field input::placeholder, .field textarea::placeholder { color: var(--dim); }
+    #submit-btn { width: 100%; justify-content: center; padding: 1.15rem; font-size: 1.05rem; }
   </style>
 </head>
-<body>
+<body data-page="thanks">
 
-  <div class="wrap" style="position:relative;">
-    <div class="hero-bg"></div>
+  <div class="aurora" aria-hidden="true"></div>
+
+  <div class="wrap">
 
     <nav class="top">
-      <div class="brand">Landing Page<span>.</span> Express</div>
+      <a class="brand" href="/landing-page-express/">Landing Page<span>.</span> Express</a>
       <div class="meta">order received</div>
     </nav>
 
     <header style="padding: 4rem 0 1rem;">
-      <span class="eyebrow"><span class="dot"></span>Payment confirmed</span>
-      <h1>Thanks. <em>Now I need 3 things.</em></h1>
+      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Payment confirmed</span>
+      <h1>Thanks. <em>Now I need 3&nbsp;things.</em></h1>
       <p class="lede">Fill this out and your site goes into the build queue. Most deliveries ship in 4–6 hours, never more than 24.</p>
     </header>
 
-    <section style="padding-top: 1rem;">
+    <section style="padding-top: 1rem; border: 0;">
       <div class="form-card">
-        <form
-          action="https://formsubmit.co/gabbokbiz@gmail.com"
-          method="POST"
-          id="intake-form"
-        >
-          <!-- Formsubmit config -->
+        <form id="intake-form" method="POST" novalidate>
           <input type="hidden" name="_subject" value="🎉 New $99 site order — intake from client" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="thanks-submitted.html" />
+          <input type="hidden" name="_next" id="next-url" value="" />
           <input type="hidden" name="_autoresponse" value="Got it — your site is in the queue. I'll send you a live URL within 24 hours (usually 4-6). Reply to this email if anything urgent comes up." />
 
           <div class="field">
@@ -87,7 +87,7 @@
 
           <div class="field">
             <label for="vibe">Optional: vibe, colors, sites you like the look of</label>
-            <textarea id="vibe" name="Vibe + references" placeholder="e.g. Warm and inviting, like haus.com or magic-spoon.com. Brand color is forest green."></textarea>
+            <textarea id="vibe" name="Vibe and references" placeholder="e.g. Warm and inviting, like haus.com or magic-spoon.com. Brand color is forest green."></textarea>
           </div>
 
           <div class="field">
@@ -95,11 +95,11 @@
             <input id="domain" name="Domain" type="text" placeholder="e.g. mealprep.com (bought on Namecheap)" />
           </div>
 
-          <button class="btn primary" type="submit" style="width: 100%; justify-content: center; padding: 1.1rem;">
-            Send intake — start the build &rarr;
+          <button id="submit-btn" class="btn primary" type="submit">
+            Send intake &nbsp;→&nbsp; start the build
           </button>
           <p class="cta-note" style="margin-top: 1rem; text-align: center;">
-            You'll get a confirmation email immediately. The live URL lands in the same inbox within 24 hours.
+            You'll get a confirmation email immediately. The live URL lands in the same inbox within 24&nbsp;hours.
           </p>
         </form>
       </div>
@@ -128,20 +128,36 @@
     </section>
 
     <footer>
-      <div>If you didn't get a confirmation email in 5 minutes, check spam or email directly.</div>
-      <div>Order #{{date}}</div>
+      <div id="footer-help">If you didn't get a confirmation email in 5 minutes, check spam.</div>
+      <div id="order-stamp">order in queue</div>
     </footer>
 
   </div>
 
   <script src="config.js" defer></script>
   <script>
-    // Mark the order with a timestamp in the footer for traceability
+    // Wire form action + success URL at runtime so the email isn't naked
+    // in the HTML source for scrapers. CONFIG comes from config.js.
     document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("intake-form");
+      const nextInput = document.getElementById("next-url");
+      const origin = window.location.origin + window.location.pathname.replace(/[^/]*$/, "");
+
+      // Build Formsubmit endpoint from the email
+      // (split + join defeats trivial scrapers)
+      const local = (window.CONFIG && window.CONFIG.CONTACT_EMAIL ? window.CONFIG.CONTACT_EMAIL : "").split("@");
+      if (local.length === 2) {
+        form.action = "https://formsubmit.co/" + local[0] + "@" + local[1];
+      } else {
+        // Fallback: mailto:
+        form.action = "mailto:" + (window.CONFIG && window.CONFIG.CONTACT_EMAIL ? window.CONFIG.CONTACT_EMAIL : "you@example.com");
+        form.enctype = "text/plain";
+      }
+      nextInput.value = origin + "thanks-submitted.html";
+
+      // Order stamp
       const stamp = new Date().toISOString().replace(/[-:T.]/g, "").slice(2, 12);
-      document.querySelectorAll("footer div").forEach((el) => {
-        el.innerHTML = el.innerHTML.replace("{{date}}", stamp);
-      });
+      document.getElementById("order-stamp").textContent = "order #" + stamp;
     });
   </script>
 </body>

@@ -4,64 +4,73 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Landing Page Express — $99, built and live in 24 hours</title>
-  <meta name="description" content="A real, fast, custom landing page for your small business. Built, deployed, and yours to keep. $99 flat. No calls, no upsells, no waiting weeks." />
+  <meta name="description" content="A real, fast, custom landing page for your small business. Built, deployed, source code yours. $99 flat. No calls, no upsells, no waiting weeks." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="styles.css" />
   <meta property="og:title" content="Landing Page Express — $99, live in 24 hours" />
   <meta property="og:description" content="A real custom landing page, built and deployed the same day. Source code yours to keep." />
   <meta property="og:image" content="og-image.svg" />
+  <meta property="og:url" content="https://mamasackboy.github.io/landing-page-express/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" />
 </head>
-<body>
+<body data-page="home">
 
-  <div class="wrap" style="position: relative;">
-    <div class="hero-bg"></div>
+  <div class="aurora" aria-hidden="true"></div>
+
+  <div class="wrap">
 
     <nav class="top">
-      <div class="brand">Landing Page<span>.</span> Express</div>
+      <a class="brand" href="/landing-page-express/">Landing Page<span>.</span> Express</a>
       <div class="meta">v1 · today only</div>
     </nav>
 
-    <header style="padding: 4.5rem 0 3rem;">
-      <span class="eyebrow"><span class="dot"></span> 2 slots open today</span>
-      <h1>A real landing page,<br><em>built and deployed in 24 hours.</em></h1>
+    <header style="padding: 5rem 0 3rem;">
+      <span class="eyebrow"><span class="dot" aria-hidden="true"></span> 2 slots open today</span>
+      <h1>A real landing page,<br><em>built and live in 24&nbsp;hours.</em></h1>
       <p class="lede">
-        No "discovery calls." No project plan. No three-week timeline. You send <span data-price>$99</span> through Stripe and 3 lines about your business — I send back a live URL the next day, plus the full source code, yours to keep.
+        No discovery calls. No three-week timeline. You send <span data-price>$99</span> through Stripe and answer 3 questions about your business — a live URL and full source code land in your inbox the next day.
       </p>
       <div class="cta-row">
-        <a class="btn primary" data-stripe href="#">Pay <span data-price>$99</span> — get your site tomorrow &rarr;</a>
+        <a class="btn primary" data-stripe data-cta="hero" href="#">Pay <span data-price>$99</span> &nbsp;→&nbsp; site by tomorrow</a>
         <a class="btn ghost" href="#samples">See sample work</a>
       </div>
-      <div class="proof"><span class="live"></span>Refundable. Most deliveries in 4–6 hours.</div>
+      <div class="proof"><span class="live" aria-hidden="true"></span>Refundable. Most deliveries in 4–6 hours.</div>
     </header>
 
-    <section id="what">
-      <h2>What you actually get.</h2>
+    <div class="trust" id="trust">
+      <div class="stat"><span class="num">$99</span><span class="label">Flat price</span></div>
+      <div class="stat"><span class="num">24h</span><span class="label">Max delivery</span></div>
+      <div class="stat"><span class="num">1</span><span class="label">Free revision</span></div>
+      <div class="stat"><span class="num">100%</span><span class="label">Refundable</span></div>
+    </div>
+
+    <section id="what" aria-labelledby="what-h">
+      <h2 id="what-h">What you actually get.</h2>
       <ul class="checks">
         <li>One responsive landing page — works on phone, tablet, laptop</li>
         <li>Custom design (no Wix or Squarespace templates)</li>
-        <li>Hero image generated or hand-illustrated, color-matched to your brand</li>
-        <li>Working contact form (forwarded straight to your email)</li>
+        <li>Hero image generated or hand-illustrated, matched to your brand</li>
+        <li>Working contact form, forwarded straight to your inbox</li>
         <li>Deployed to a free subdomain — or your own domain if you have one</li>
-        <li>Full source code in a private GitHub repo, transferred to you on delivery</li>
+        <li>Full source code in a private GitHub repo, transferred on delivery</li>
         <li>One round of revisions included</li>
       </ul>
     </section>
 
-    <section id="samples">
-      <h2>Recent work.</h2>
+    <section id="samples" aria-labelledby="samples-h">
+      <h2 id="samples-h">Recent work.</h2>
       <div class="gallery">
-        <a class="sample" href="samples/dogwalker/">
-          <div class="thumb">
+        <a class="sample" href="samples/dogwalker/" aria-label="View Brooklyn Paws sample">
+          <div class="thumb" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
               <defs>
                 <linearGradient id="dg1" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#fde7c3"/>
-                  <stop offset="0.5" stop-color="#f5c97f"/>
+                  <stop offset="0" stop-color="#fde4a8"/>
+                  <stop offset="0.5" stop-color="#f5b574"/>
                   <stop offset="1" stop-color="#d97706"/>
                 </linearGradient>
                 <radialGradient id="dg2" cx="0.3" cy="0.4" r="0.7">
@@ -71,31 +80,45 @@
               </defs>
               <rect width="400" height="250" fill="url(#dg1)"/>
               <rect width="400" height="250" fill="url(#dg2)"/>
-              <!-- silhouette of a dog walker -->
-              <g fill="#92400e" opacity="0.85">
-                <ellipse cx="280" cy="200" rx="40" ry="6" opacity="0.3"/>
-                <path d="M270 195 Q272 170 280 168 L290 168 Q296 170 296 178 L296 190 L300 200 L294 200 L290 192 L284 200 L278 200 Z"/>
-                <ellipse cx="306" cy="174" rx="7" ry="4"/>
-                <path d="M306 174 L312 178 L306 180 Z"/>
+              <g fill="#7c2d12" opacity="0.92">
+                <rect x="0" y="180" width="60" height="50"/>
+                <rect x="60" y="160" width="80" height="70"/>
+                <rect x="140" y="170" width="70" height="60"/>
+                <rect x="210" y="150" width="90" height="80"/>
+                <rect x="300" y="175" width="60" height="55"/>
+                <rect x="360" y="160" width="40" height="70"/>
               </g>
-              <g fill="#7c2d12" opacity="0.95">
-                <ellipse cx="180" cy="210" rx="50" ry="6" opacity="0.3"/>
-                <path d="M170 205 L170 175 Q170 168 178 168 L188 168 Q196 168 196 176 L196 205 L200 215 L194 215 L190 207 L184 215 L178 215 L174 207 L172 215 L166 215 Z"/>
-                <circle cx="183" cy="162" r="9"/>
-                <path d="M195 178 L260 174" stroke="#7c2d12" stroke-width="1.5" fill="none"/>
+              <g fill="#fef3c7" opacity="0.85">
+                <rect x="75" y="178" width="10" height="14"/>
+                <rect x="95" y="178" width="10" height="14"/>
+                <rect x="225" y="168" width="10" height="14"/>
+                <rect x="250" y="168" width="10" height="14"/>
+                <rect x="275" y="168" width="10" height="14"/>
               </g>
-              <text x="20" y="232" fill="#7c2d12" font-family="Georgia, serif" font-size="11" font-style="italic" opacity="0.7">Brooklyn Paws</text>
+              <g fill="#1a0905" opacity="0.95">
+                <circle cx="170" cy="215" r="9"/>
+                <path d="M158 220 L158 240 L162 240 L165 228 L168 240 L172 240 L172 220 Z"/>
+                <path d="M180 220 Q220 226 250 235" stroke="#1a0905" stroke-width="1.5" fill="none"/>
+                <ellipse cx="265" cy="232" rx="22" ry="10"/>
+                <circle cx="285" cy="227" r="8"/>
+                <polygon points="291,220 297,213 293,228"/>
+                <rect x="248" y="240" width="3" height="8"/>
+                <rect x="257" y="240" width="3" height="8"/>
+                <rect x="273" y="240" width="3" height="8"/>
+                <rect x="282" y="240" width="3" height="8"/>
+              </g>
+              <circle cx="330" cy="50" r="22" fill="#fef3c7" opacity="0.9"/>
             </svg>
           </div>
           <div class="meta">
             <h3>Brooklyn Paws</h3>
-            <p>Dog walking service in Park Slope & Carroll Gardens. Booking form + GPS-tracked walk pricing.</p>
-            <span class="open">View live →</span>
+            <p>Dog walking service in Park Slope &amp; Carroll Gardens. Booking form + GPS-tracked walk pricing.</p>
+            <span class="open">View live demo →</span>
           </div>
         </a>
 
-        <a class="sample" href="samples/pilates/">
-          <div class="thumb">
+        <a class="sample" href="samples/pilates/" aria-label="View Riverside Pilates sample">
+          <div class="thumb" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice">
               <defs>
                 <linearGradient id="pg1" x1="0" y1="0" x2="0" y2="1">
@@ -105,14 +128,12 @@
                 </linearGradient>
               </defs>
               <rect width="400" height="250" fill="url(#pg1)"/>
-              <!-- abstract architectural lines -->
-              <g stroke="#4a5d4a" stroke-width="1" fill="none" opacity="0.45">
+              <g stroke="#4a5d4a" stroke-width="1" fill="none" opacity="0.4">
                 <path d="M0 60 L400 60"/>
                 <path d="M0 90 L400 90"/>
                 <path d="M40 0 L40 250"/>
                 <path d="M360 0 L360 250"/>
               </g>
-              <!-- reformer abstract -->
               <g stroke="#4a5d4a" stroke-width="2.5" fill="none">
                 <rect x="100" y="135" width="200" height="14" rx="3"/>
                 <line x1="120" y1="149" x2="120" y2="170"/>
@@ -122,20 +143,19 @@
                 <circle cx="70" cy="142" r="6" fill="#b8956a" stroke="none"/>
                 <circle cx="330" cy="142" r="6" fill="#b8956a" stroke="none"/>
               </g>
-              <text x="20" y="232" fill="#4a5d4a" font-family="Georgia, serif" font-size="11" font-style="italic" opacity="0.7">Riverside Pilates</text>
             </svg>
           </div>
           <div class="meta">
             <h3>Riverside Pilates</h3>
             <p>Small-group reformer studio in Hudson, NY. Class schedule + intro 3-pack purchase flow.</p>
-            <span class="open">View live →</span>
+            <span class="open">View live demo →</span>
           </div>
         </a>
       </div>
     </section>
 
-    <section id="how">
-      <h2>How it works.</h2>
+    <section id="how" aria-labelledby="how-h">
+      <h2 id="how-h">How it works.</h2>
       <div class="steps">
         <div class="step">
           <h3>You pay <span data-price>$99</span></h3>
@@ -156,45 +176,110 @@
       </div>
     </section>
 
-    <section>
-      <div class="price-card">
-        <p class="eyebrow" style="margin: 0 auto 1.25rem;"><span class="dot"></span>Today only</p>
-        <div class="price">
-          <span class="strike">$500+</span><span data-price>$99</span>
-          <small> · flat, one-time</small>
+    <section id="price" aria-labelledby="price-h">
+      <h2 id="price-h" style="text-align: center; margin-bottom: 1rem;">One price. <em>Today only.</em></h2>
+      <div class="price-card-outer">
+        <div class="price-card">
+          <span class="eyebrow" style="margin-bottom: 1.25rem;"><span class="dot" aria-hidden="true"></span>2 slots open today</span>
+          <div class="price-display">
+            <span class="strike">$500</span>
+            <span class="price-now" data-price>$99</span>
+            <span class="price-unit">flat · one-time</span>
+          </div>
+          <p class="sub">No retainers. No upsells. No "starting at."</p>
+          <a class="btn primary" data-stripe data-cta="price" href="#">Pay <span data-price>$99</span> &nbsp;→&nbsp; start the build</a>
+          <div class="proof" style="justify-content: center;"><span class="live" aria-hidden="true"></span>Refunded instantly if you don't love it.</div>
         </div>
-        <p class="sub">No retainers. No upsells. No "starting at."</p>
-        <div style="margin-top: 1.75rem;">
-          <a class="btn primary" data-stripe href="#">Pay <span data-price>$99</span> &rarr;</a>
-        </div>
-        <div class="proof" style="justify-content: center;"><span class="live"></span>Refunded instantly if you don't love it.</div>
       </div>
     </section>
 
-    <section class="faq">
-      <h2>Common questions.</h2>
-      <dl>
-        <dt>How are you doing this for <span data-price>$99</span>?</dt>
-        <dd>I'm fast and I work alone. Agencies charge $5k+ because they have meetings and account managers. I don't, so I don't.</dd>
+    <section id="faq" aria-labelledby="faq-h">
+      <h2 id="faq-h">Common questions.</h2>
+      <div class="faq" id="faq-list">
+        <div class="faq-item" data-open="true">
+          <button class="faq-trigger" aria-expanded="true" aria-controls="faq-1">
+            <span>How are you doing this for <span data-price>$99</span>?</span>
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 1v10"/><path d="M1 6h10"/></svg></span>
+          </button>
+          <div class="faq-body" id="faq-1" role="region">
+            <div class="faq-body-inner">
+              <p>I'm fast and I work alone. Agencies charge $5k+ because they have meetings, account managers, and project plans. I don't have any of those, so I don't charge for them.</p>
+            </div>
+          </div>
+        </div>
 
-        <dt>What if I don't like it?</dt>
-        <dd>One free revision round. If it's still not right, full refund — no questions, no haggling.</dd>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-2">
+            <span>What if I don't like it?</span>
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 1v10"/><path d="M1 6h10"/></svg></span>
+          </button>
+          <div class="faq-body" id="faq-2" role="region">
+            <div class="faq-body-inner">
+              <p>One free revision round. If the second pass still misses, I refund you in full — no questions, no haggling. The risk is mine.</p>
+            </div>
+          </div>
+        </div>
 
-        <dt>Can you do more than one page?</dt>
-        <dd>This offer is one page only. For multi-page sites, ping me after — I'll quote separately, usually $79 per additional page.</dd>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-3">
+            <span>Can you do more than one page?</span>
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 1v10"/><path d="M1 6h10"/></svg></span>
+          </button>
+          <div class="faq-body" id="faq-3" role="region">
+            <div class="faq-body-inner">
+              <p>This offer is one page only. For multi-page sites, ping me after — usually $79 per additional page on the same brand system.</p>
+            </div>
+          </div>
+        </div>
 
-        <dt>Do I own the code?</dt>
-        <dd>Yes. Full source in a private GitHub repo, transferred to your account on delivery. Edit it, hand it to another dev, fork it, ship it — it's yours.</dd>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-4">
+            <span>Do I own the code?</span>
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 1v10"/><path d="M1 6h10"/></svg></span>
+          </button>
+          <div class="faq-body" id="faq-4" role="region">
+            <div class="faq-body-inner">
+              <p>Yes. Full source in a private GitHub repo, transferred to your account on delivery. Edit it, hand it to another dev, fork it — it's yours.</p>
+            </div>
+          </div>
+        </div>
 
-        <dt>What if my business is too niche?</dt>
-        <dd>It's not. If you can describe what you do in three lines, I can build a page for it. I've shipped sites for dog walkers, pilates studios, accountants, ceramics studios, and a Pakistani street-food pop-up.</dd>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-5">
+            <span>What if my business is too niche?</span>
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 1v10"/><path d="M1 6h10"/></svg></span>
+          </button>
+          <div class="faq-body" id="faq-5" role="region">
+            <div class="faq-body-inner">
+              <p>It's not. If you can describe what you do in three lines, I can build a page for it. I've shipped sites for dog walkers, pilates studios, accountants, ceramics studios, and a Pakistani street-food pop-up.</p>
+            </div>
+          </div>
+        </div>
 
-        <dt>Can I use my own domain?</dt>
-        <dd>Yes. If you have one (Namecheap, GoDaddy, Squarespace, etc.) I'll set up the DNS and SSL for free as part of delivery. If you don't, I'll deploy to a free subdomain you can keep forever.</dd>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-6">
+            <span>Can I use my own domain?</span>
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 1v10"/><path d="M1 6h10"/></svg></span>
+          </button>
+          <div class="faq-body" id="faq-6" role="region">
+            <div class="faq-body-inner">
+              <p>Yes. If you have one (Namecheap, GoDaddy, Squarespace, etc.) I'll set up DNS + SSL for free as part of delivery. If you don't, I'll deploy to a free subdomain you can keep forever.</p>
+            </div>
+          </div>
+        </div>
 
-        <dt>Is the hero image AI-generated?</dt>
-        <dd>By default yes — I use Flux or Higgsfield for a fast custom hero. If you have brand photography, I'll use that instead.</dd>
-      </dl>
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false" aria-controls="faq-7">
+            <span>Is the hero image AI-generated?</span>
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 1v10"/><path d="M1 6h10"/></svg></span>
+          </button>
+          <div class="faq-body" id="faq-7" role="region">
+            <div class="faq-body-inner">
+              <p>By default yes — I use Flux or Higgsfield for a fast custom hero. If you have brand photography, I'll use that instead at no extra cost.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <footer>
@@ -205,5 +290,6 @@
   </div>
 
   <script src="config.js" defer></script>
+  <script src="ui.js" defer></script>
 </body>
 </html>

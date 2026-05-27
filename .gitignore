@@ -3,3 +3,7 @@
 .netlify
 node_modules
 *.log
+tests/node_modules/
+tests/screenshots/
+tests/summary.json
+tests/package-lock.json
