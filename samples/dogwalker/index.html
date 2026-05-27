@@ -51,8 +51,9 @@
   .hero-art {
     aspect-ratio: 1/1; border-radius: 24px; overflow: hidden;
     box-shadow: 0 30px 60px -20px rgba(217, 119, 6, 0.35);
+    background: #f5b574;
   }
-  .hero-art svg { width: 100%; height: 100%; display: block; }
+  .hero-art img, .hero-art svg { width: 100%; height: 100%; display: block; object-fit: cover; }
 
   .badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
   .badge { background: #fef3c7; color: var(--accent-dark); padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
@@ -129,104 +130,7 @@
     </div>
 
     <div class="hero-art">
-      <!-- Brooklyn brownstone-and-dog sunset illustration -->
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#fde4a8"/>
-            <stop offset="0.5" stop-color="#f5b574"/>
-            <stop offset="1" stop-color="#d97706"/>
-          </linearGradient>
-          <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#92400e"/>
-            <stop offset="1" stop-color="#5a2810"/>
-          </linearGradient>
-        </defs>
-
-        <!-- Sky -->
-        <rect width="600" height="450" fill="url(#sky)"/>
-        <!-- Sun -->
-        <circle cx="430" cy="200" r="60" fill="#fef3c7" opacity="0.95"/>
-        <circle cx="430" cy="200" r="110" fill="#fef3c7" opacity="0.2"/>
-
-        <!-- Brownstones silhouette -->
-        <g fill="#7c2d12">
-          <rect x="0" y="280" width="80" height="170"/>
-          <rect x="80" y="240" width="100" height="210"/>
-          <rect x="180" y="260" width="90" height="190"/>
-          <rect x="270" y="220" width="110" height="230"/>
-          <rect x="380" y="270" width="80" height="180"/>
-          <rect x="460" y="245" width="140" height="205"/>
-          <!-- Roof details -->
-          <polygon points="80,240 100,225 180,225 180,240"/>
-          <polygon points="270,220 290,205 380,205 380,220"/>
-          <polygon points="460,245 480,230 600,230 600,245"/>
-        </g>
-
-        <!-- Brownstone windows lit up -->
-        <g fill="#fef3c7" opacity="0.85">
-          <rect x="100" y="270" width="14" height="18"/>
-          <rect x="125" y="270" width="14" height="18"/>
-          <rect x="150" y="270" width="14" height="18"/>
-          <rect x="100" y="310" width="14" height="18"/>
-          <rect x="150" y="310" width="14" height="18"/>
-          <rect x="290" y="250" width="14" height="18"/>
-          <rect x="315" y="250" width="14" height="18"/>
-          <rect x="340" y="250" width="14" height="18"/>
-          <rect x="290" y="290" width="14" height="18"/>
-          <rect x="315" y="290" width="14" height="18"/>
-          <rect x="480" y="270" width="14" height="18"/>
-          <rect x="510" y="270" width="14" height="18"/>
-          <rect x="540" y="270" width="14" height="18"/>
-          <rect x="570" y="270" width="14" height="18"/>
-          <rect x="480" y="310" width="14" height="18"/>
-          <rect x="540" y="310" width="14" height="18"/>
-        </g>
-
-        <!-- Street/sidewalk -->
-        <rect y="450" width="600" height="150" fill="url(#ground)"/>
-        <!-- Sidewalk line -->
-        <rect y="450" width="600" height="3" fill="#fdba74" opacity="0.5"/>
-
-        <!-- Streetlamp -->
-        <g stroke="#3d1707" stroke-width="3" fill="none">
-          <line x1="540" y1="450" x2="540" y2="350"/>
-          <path d="M540 350 Q540 340 530 340 L515 340"/>
-        </g>
-        <circle cx="510" cy="340" r="8" fill="#fde68a"/>
-        <circle cx="510" cy="340" r="20" fill="#fde68a" opacity="0.3"/>
-
-        <!-- Person walking dog (silhouettes) -->
-        <g fill="#1a0905">
-          <!-- Walker -->
-          <ellipse cx="260" cy="450" rx="30" ry="4" opacity="0.5"/>
-          <circle cx="250" cy="365" r="14"/>
-          <path d="M236 380 Q236 410 240 440 L240 540 L246 540 L252 460 L258 540 L264 540 L264 410 Q264 388 250 380 Z"/>
-          <!-- Leash -->
-          <path d="M268 410 Q310 425 360 460" stroke="#fde68a" stroke-width="2.5" fill="none" opacity="0.9"/>
-
-          <!-- Dog -->
-          <ellipse cx="385" cy="545" rx="40" ry="4" opacity="0.5"/>
-          <ellipse cx="385" cy="498" rx="38" ry="20"/>
-          <circle cx="420" cy="488" r="14"/>
-          <polygon points="430,478 438,468 432,486"/>
-          <polygon points="412,478 408,468 414,486"/>
-          <!-- Dog tail -->
-          <path d="M348 490 Q335 478 340 466" stroke="#1a0905" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <!-- Dog legs -->
-          <rect x="358" y="510" width="6" height="20"/>
-          <rect x="370" y="510" width="6" height="20"/>
-          <rect x="395" y="510" width="6" height="20"/>
-          <rect x="407" y="510" width="6" height="20"/>
-        </g>
-
-        <!-- Tiny birds -->
-        <g fill="none" stroke="#7c2d12" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
-          <path d="M120 130 Q126 124 132 130 Q138 124 144 130"/>
-          <path d="M180 110 Q184 106 188 110 Q192 106 196 110"/>
-          <path d="M330 90 Q335 84 340 90 Q345 84 350 90"/>
-        </g>
-      </svg>
+      <img src="img/hero.png" alt="A person in a denim jacket walking a happy golden retriever down a Brooklyn brownstone street in Park Slope at sunset" width="1024" height="1024" fetchpriority="high" decoding="async" />
     </div>
   </section>
 
