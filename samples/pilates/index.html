@@ -25,8 +25,8 @@
     --border: #ddd4c4;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { background: var(--bg); color: var(--fg); scroll-behavior: smooth; }
-  body { font-family: "DM Sans", system-ui, sans-serif; line-height: 1.65; font-size: 1rem; }
+  html { background: var(--bg); color: var(--fg); scroll-behavior: smooth; font-size: clamp(1rem, 0.4rem + 0.55vw, 1.45rem); }
+  body { font-family: "DM Sans", system-ui, sans-serif; line-height: 1.65; }
 
   .sample-badge { position: fixed; top: 1rem; right: 1rem; background: var(--accent); color: #fff; padding: 0.5rem 0.9rem; border-radius: 999px; font-size: 0.75rem; font-family: ui-monospace, monospace; z-index: 100; text-decoration: none; }
 
@@ -71,7 +71,7 @@
   @media (min-width: 800px) {
     .hero {
       grid-template-columns: 5fr 6fr;
-      padding: 4rem 0 0 max(2rem, calc((100vw - 1200px) / 2 + 2rem));
+      padding: 4rem 0 0 max(2rem, calc((100vw - min(1400px, 78vw)) / 2 + 2rem));
       gap: 3rem; align-items: end;
     }
   }
@@ -139,7 +139,7 @@
   @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
   /* ── SHARED SECTION ── */
-  section { padding: 5rem max(1.5rem, calc((100vw - 1000px) / 2)); }
+  section { padding: 5rem max(1.5rem, calc((100vw - min(1300px, 72vw)) / 2)); }
   h2 {
     font-family: "Literata", Georgia, serif;
     font-size: clamp(1.9rem, 3.5vw, 2.8rem);
@@ -203,7 +203,7 @@
 
   /* ── PULL QUOTE ── */
   .pull-quote {
-    padding: 4rem max(1.5rem, calc((100vw - 800px) / 2));
+    padding: 4rem max(1.5rem, calc((100vw - min(900px, 55vw)) / 2));
     text-align: center;
   }
   .pull-quote p {
@@ -319,7 +319,7 @@
 
   /* ── FOOTER ── */
   footer {
-    padding: 2.5rem max(1.5rem, calc((100vw - 1000px) / 2));
+    padding: 2.5rem max(1.5rem, calc((100vw - min(1300px, 72vw)) / 2));
     color: var(--dim); font-size: 0.82rem;
     display: flex; justify-content: space-between;
     flex-wrap: wrap; gap: 1rem;
