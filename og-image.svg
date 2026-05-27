@@ -1,56 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid slice">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0a0a0a"/>
-      <stop offset="1" stop-color="#1a0a05"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#ff5500" stop-opacity="0.4"/>
-      <stop offset="1" stop-color="#ff5500" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
+  <rect width="1200" height="630" fill="#f7f4f0"/>
 
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <ellipse cx="600" cy="100" rx="700" ry="300" fill="url(#glow)"/>
+  <!-- Subtle warm accent bar at top -->
+  <rect y="0" width="1200" height="6" fill="#a0522d"/>
 
-  <!-- Border accent -->
-  <rect x="40" y="40" width="1120" height="550" rx="20" fill="none" stroke="#242424" stroke-width="2"/>
+  <!-- Border frame -->
+  <rect x="40" y="40" width="1120" height="550" rx="16" fill="none" stroke="rgba(46,37,32,0.1)" stroke-width="1.5"/>
 
-  <!-- Eyebrow chip -->
-  <g transform="translate(80, 100)">
-    <rect width="220" height="36" rx="18" fill="rgba(255, 85, 0, 0.12)" stroke="#ff5500" stroke-width="1"/>
-    <circle cx="20" cy="18" r="4" fill="#ff5500"/>
-    <text x="34" y="23" fill="#ff5500" font-family="ui-monospace, Menlo, monospace" font-size="13" font-weight="600" letter-spacing="2">LIVE IN 24 HOURS</text>
+  <!-- Eyebrow -->
+  <g transform="translate(80, 110)">
+    <circle cx="0" cy="0" r="4" fill="#a0522d"/>
+    <text x="14" y="5" fill="#a0522d" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" letter-spacing="2">LIVE IN 24 HOURS</text>
   </g>
 
   <!-- Headline -->
-  <text x="80" y="240" fill="#f5f5f5" font-family="Georgia, 'Cormorant Garamond', serif" font-size="76" font-weight="400" letter-spacing="-2">A real landing page,</text>
-  <text x="80" y="320" fill="#ff5500" font-family="Georgia, 'Cormorant Garamond', serif" font-size="76" font-style="italic" font-weight="400" letter-spacing="-2">built and deployed today.</text>
+  <text x="80" y="220" fill="#1c1612" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="400" letter-spacing="-2">A real landing page,</text>
+  <text x="80" y="305" fill="#a0522d" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-style="italic" font-weight="400" letter-spacing="-2">built and live today.</text>
 
   <!-- Subhead -->
-  <text x="80" y="380" fill="#9a9a9a" font-family="-apple-system, system-ui, sans-serif" font-size="22" font-weight="400">No discovery calls. No three-week timeline. $99 flat, source code yours.</text>
+  <text x="80" y="370" fill="#76685c" font-family="system-ui, -apple-system, sans-serif" font-size="21" font-weight="400">No discovery calls. No three-week timeline. $99 flat, source code yours.</text>
 
-  <!-- Price + button -->
-  <g transform="translate(80, 440)">
-    <rect width="280" height="74" rx="12" fill="#ff5500"/>
-    <text x="140" y="48" fill="#000" font-family="-apple-system, system-ui, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Pay $99  →</text>
+  <!-- CTA button -->
+  <g transform="translate(80, 420)">
+    <rect width="260" height="68" rx="10" fill="#a0522d"/>
+    <text x="130" y="43" fill="#f7f4f0" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" text-anchor="middle">Pay $99  →</text>
   </g>
 
-  <g transform="translate(400, 440)">
-    <rect width="74" height="74" rx="12" fill="none" stroke="#353535" stroke-width="2"/>
-    <text x="37" y="48" fill="#f5f5f5" font-family="Georgia, serif" font-size="32" text-anchor="middle">⏱</text>
+  <!-- Delivery note -->
+  <g transform="translate(370, 420)">
+    <circle cx="12" cy="34" r="4" fill="#2e8b57"/>
+    <text x="24" y="30" fill="#1c1612" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="600">4–6 hours typical</text>
+    <text x="24" y="52" fill="#76685c" font-family="system-ui, -apple-system, sans-serif" font-size="14">Refundable. Repo handed over.</text>
   </g>
-  <text x="500" y="470" fill="#f5f5f5" font-family="-apple-system, system-ui, sans-serif" font-size="18" font-weight="600">4–6 hours typical</text>
-  <text x="500" y="495" fill="#9a9a9a" font-family="-apple-system, system-ui, sans-serif" font-size="15">Refundable. Repo handed over.</text>
 
   <!-- Bottom brand -->
-  <g transform="translate(80, 560)">
-    <text fill="#6a6a6a" font-family="ui-monospace, Menlo, monospace" font-size="14" letter-spacing="1">LANDING-PAGE.EXPRESS</text>
-  </g>
+  <text x="80" y="560" fill="#9a8e83" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" letter-spacing="1">LANDING PAGE EXPRESS</text>
 
-  <!-- Decorative bracket marks -->
-  <g stroke="#ff5500" stroke-width="3" stroke-linecap="round" fill="none">
-    <path d="M1060 100 L1100 100 L1100 140"/>
-    <path d="M1100 530 L1100 570 L1060 570"/>
+  <!-- Corner accents -->
+  <g stroke="#a0522d" stroke-width="2.5" stroke-linecap="round" fill="none">
+    <path d="M1060 100 L1094 100 L1094 134"/>
+    <path d="M1094 510 L1094 544 L1060 544"/>
   </g>
 </svg>
