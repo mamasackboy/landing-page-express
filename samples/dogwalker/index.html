@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Brooklyn Paws — Trusted dog walking in Park Slope & Carroll Gardens</title>
+<meta name="description" content="Insured, GPS-tracked dog walks in Brooklyn. Same-day booking. First walk free." />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,800;1,400&family=Inter:wght@400;500;600;700&display=swap" />
+<style>
+  :root {
+    --bg: #fefcf7;
+    --fg: #1a1a1a;
+    --muted: #5a5a5a;
+    --accent: #d97706;
+    --accent-dark: #92400e;
+    --cream: #fdf6e8;
+    --card: #ffffff;
+    --border: #e7e0d0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--fg); font-family: "Inter", system-ui, sans-serif; line-height: 1.6; }
+  body { padding: 0 1.25rem; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  .serif { font-family: "Fraunces", Georgia, serif; }
+
+  .sample-badge { position: fixed; top: 1rem; right: 1rem; background: #000; color: #fff; padding: 0.5rem 0.9rem; border-radius: 999px; font-size: 0.75rem; font-family: ui-monospace, monospace; z-index: 100; }
+  .sample-badge a { color: var(--accent); text-decoration: none; margin-left: 0.5rem; }
+
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; }
+  nav .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: -0.01em; font-family: "Fraunces", Georgia, serif; }
+  nav .logo span { color: var(--accent); }
+  nav a { color: var(--fg); text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; }
+  nav a.book { background: var(--accent); color: white; padding: 0.6rem 1.1rem; border-radius: 999px; font-weight: 600; }
+
+  .hero { padding: 4rem 0 5rem; display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+  @media (min-width: 800px) { .hero { grid-template-columns: 1.1fr 1fr; } }
+  .hero h1 { font-family: "Fraunces", Georgia, serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+  .hero h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .hero p.lede { font-size: 1.2rem; color: var(--muted); margin-bottom: 2rem; max-width: 30rem; }
+  .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 1.5rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 1rem; font-family: inherit; border: 0; cursor: pointer; }
+  .btn.primary { background: var(--accent); color: white; }
+  .btn.primary:hover { background: var(--accent-dark); }
+  .btn.ghost { color: var(--fg); border: 1px solid var(--border); background: transparent; }
+
+  /* Real illustrated hero — sunset Brooklyn park scene */
+  .hero-art {
+    aspect-ratio: 1/1; border-radius: 24px; overflow: hidden;
+    box-shadow: 0 30px 60px -20px rgba(217, 119, 6, 0.35);
+  }
+  .hero-art svg { width: 100%; height: 100%; display: block; }
+
+  .badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .badge { background: #fef3c7; color: var(--accent-dark); padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
+
+  section { padding: 5rem 0; }
+  h2 { font-family: "Fraunces", Georgia, serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; letter-spacing: -0.015em; margin-bottom: 2.5rem; max-width: 30rem; }
+  h2 em { font-style: italic; color: var(--accent); font-weight: 400; }
+
+  .features { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+  @media (min-width: 700px) { .features { grid-template-columns: repeat(3, 1fr); } }
+  .feature { background: var(--card); padding: 2rem; border-radius: 16px; border: 1px solid var(--border); }
+  .feature .icon { width: 48px; height: 48px; border-radius: 12px; background: var(--cream); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; color: var(--accent); }
+  .feature .icon svg { width: 24px; height: 24px; }
+  .feature h3 { font-family: "Fraunces", Georgia, serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .feature p { color: var(--muted); font-size: 0.95rem; }
+
+  .pricing { background: var(--card); padding: 3rem; border-radius: 24px; border: 1px solid var(--border); }
+  .pricing h2 { margin-bottom: 0.5rem; }
+  .price-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+  @media (min-width: 700px) { .price-grid { grid-template-columns: repeat(3, 1fr); } }
+  .price-card { padding: 1.75rem; border-radius: 16px; border: 1px solid var(--border); }
+  .price-card.featured { background: var(--accent); color: white; border-color: var(--accent); transform: scale(1.05); box-shadow: 0 20px 40px -10px rgba(217, 119, 6, 0.4); }
+  .price-card h3 { font-family: "Fraunces", Georgia, serif; font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .price-card .price { font-family: "Fraunces", Georgia, serif; font-size: 2.5rem; font-weight: 800; margin: 1rem 0; }
+  .price-card ul { list-style: none; padding: 0; }
+  .price-card li { padding: 0.4rem 0; font-size: 0.95rem; }
+  .price-card li::before { content: "✓ "; margin-right: 0.3rem; }
+
+  .testimonials { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+  @media (min-width: 700px) { .testimonials { grid-template-columns: repeat(2, 1fr); } }
+  .quote { background: var(--card); padding: 2rem; border-radius: 16px; border: 1px solid var(--border); }
+  .quote p { font-style: italic; margin-bottom: 1rem; font-family: "Fraunces", Georgia, serif; font-size: 1.1rem; }
+  .quote .who { color: var(--muted); font-size: 0.9rem; font-style: normal; font-family: "Inter", sans-serif; }
+
+  .booking { background: var(--accent); color: white; padding: 4rem 2rem; border-radius: 24px; text-align: center; margin-bottom: 3rem; }
+  .booking h2 { color: white; margin: 0 auto 1rem; }
+  .booking p { font-size: 1.15rem; opacity: 0.9; margin-bottom: 2rem; }
+  .booking .btn.primary { background: white; color: var(--accent); }
+
+  form { display: grid; gap: 1rem; max-width: 500px; margin: 0 auto; }
+  input, select { font-family: inherit; font-size: 1rem; padding: 0.85rem 1rem; border-radius: 10px; border: 0; background: rgba(255,255,255,0.95); color: var(--fg); }
+
+  footer { padding: 3rem 0; color: var(--muted); border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+
+<a class="sample-badge" href="../../">← portfolio sample · <a href="../../">back to Landing Page Express</a></a>
+
+<div class="wrap">
+
+  <nav>
+    <div class="logo">Brooklyn<span>Paws</span></div>
+    <div>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#book" class="book">Book a walk</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <div class="badge-row">
+        <span class="badge">✓ Fully insured</span>
+        <span class="badge">✓ GPS tracked</span>
+        <span class="badge">✓ Same-day booking</span>
+      </div>
+      <h1>Your dog's new <em>favorite person</em> lives 4 blocks away.</h1>
+      <p class="lede">Insured, vetted dog walkers serving Park Slope, Carroll Gardens, Cobble Hill, and Boerum Hill. Real photos every walk. First 30-minute walk is free.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#book">Book my dog's first walk →</a>
+        <a class="btn ghost" href="#how">How it works</a>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <!-- Brooklyn brownstone-and-dog sunset illustration -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fde4a8"/>
+            <stop offset="0.5" stop-color="#f5b574"/>
+            <stop offset="1" stop-color="#d97706"/>
+          </linearGradient>
+          <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#92400e"/>
+            <stop offset="1" stop-color="#5a2810"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Sky -->
+        <rect width="600" height="450" fill="url(#sky)"/>
+        <!-- Sun -->
+        <circle cx="430" cy="200" r="60" fill="#fef3c7" opacity="0.95"/>
+        <circle cx="430" cy="200" r="110" fill="#fef3c7" opacity="0.2"/>
+
+        <!-- Brownstones silhouette -->
+        <g fill="#7c2d12">
+          <rect x="0" y="280" width="80" height="170"/>
+          <rect x="80" y="240" width="100" height="210"/>
+          <rect x="180" y="260" width="90" height="190"/>
+          <rect x="270" y="220" width="110" height="230"/>
+          <rect x="380" y="270" width="80" height="180"/>
+          <rect x="460" y="245" width="140" height="205"/>
+          <!-- Roof details -->
+          <polygon points="80,240 100,225 180,225 180,240"/>
+          <polygon points="270,220 290,205 380,205 380,220"/>
+          <polygon points="460,245 480,230 600,230 600,245"/>
+        </g>
+
+        <!-- Brownstone windows lit up -->
+        <g fill="#fef3c7" opacity="0.85">
+          <rect x="100" y="270" width="14" height="18"/>
+          <rect x="125" y="270" width="14" height="18"/>
+          <rect x="150" y="270" width="14" height="18"/>
+          <rect x="100" y="310" width="14" height="18"/>
+          <rect x="150" y="310" width="14" height="18"/>
+          <rect x="290" y="250" width="14" height="18"/>
+          <rect x="315" y="250" width="14" height="18"/>
+          <rect x="340" y="250" width="14" height="18"/>
+          <rect x="290" y="290" width="14" height="18"/>
+          <rect x="315" y="290" width="14" height="18"/>
+          <rect x="480" y="270" width="14" height="18"/>
+          <rect x="510" y="270" width="14" height="18"/>
+          <rect x="540" y="270" width="14" height="18"/>
+          <rect x="570" y="270" width="14" height="18"/>
+          <rect x="480" y="310" width="14" height="18"/>
+          <rect x="540" y="310" width="14" height="18"/>
+        </g>
+
+        <!-- Street/sidewalk -->
+        <rect y="450" width="600" height="150" fill="url(#ground)"/>
+        <!-- Sidewalk line -->
+        <rect y="450" width="600" height="3" fill="#fdba74" opacity="0.5"/>
+
+        <!-- Streetlamp -->
+        <g stroke="#3d1707" stroke-width="3" fill="none">
+          <line x1="540" y1="450" x2="540" y2="350"/>
+          <path d="M540 350 Q540 340 530 340 L515 340"/>
+        </g>
+        <circle cx="510" cy="340" r="8" fill="#fde68a"/>
+        <circle cx="510" cy="340" r="20" fill="#fde68a" opacity="0.3"/>
+
+        <!-- Person walking dog (silhouettes) -->
+        <g fill="#1a0905">
+          <!-- Walker -->
+          <ellipse cx="260" cy="450" rx="30" ry="4" opacity="0.5"/>
+          <circle cx="250" cy="365" r="14"/>
+          <path d="M236 380 Q236 410 240 440 L240 540 L246 540 L252 460 L258 540 L264 540 L264 410 Q264 388 250 380 Z"/>
+          <!-- Leash -->
+          <path d="M268 410 Q310 425 360 460" stroke="#fde68a" stroke-width="2.5" fill="none" opacity="0.9"/>
+
+          <!-- Dog -->
+          <ellipse cx="385" cy="545" rx="40" ry="4" opacity="0.5"/>
+          <ellipse cx="385" cy="498" rx="38" ry="20"/>
+          <circle cx="420" cy="488" r="14"/>
+          <polygon points="430,478 438,468 432,486"/>
+          <polygon points="412,478 408,468 414,486"/>
+          <!-- Dog tail -->
+          <path d="M348 490 Q335 478 340 466" stroke="#1a0905" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <!-- Dog legs -->
+          <rect x="358" y="510" width="6" height="20"/>
+          <rect x="370" y="510" width="6" height="20"/>
+          <rect x="395" y="510" width="6" height="20"/>
+          <rect x="407" y="510" width="6" height="20"/>
+        </g>
+
+        <!-- Tiny birds -->
+        <g fill="none" stroke="#7c2d12" stroke-width="1.5" stroke-linecap="round" opacity="0.7">
+          <path d="M120 130 Q126 124 132 130 Q138 124 144 130"/>
+          <path d="M180 110 Q184 106 188 110 Q192 106 196 110"/>
+          <path d="M330 90 Q335 84 340 90 Q345 84 350 90"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section id="how">
+    <h2>Three taps and your <em>dog is out the door</em>.</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h3>Book in 30 seconds</h3>
+        <p>Same-day walks available. Pick a window, we send a walker. No back-and-forth scheduling.</p>
+      </div>
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>Live GPS + photos</h3>
+        <p>You see the walk route in real time. Three photos from the walk land in your inbox before your dog is back home.</p>
+      </div>
+      <div class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3-3-3 3"/><line x1="19" y1="8" x2="19" y2="16"/></svg></div>
+        <h3>Same walker every time</h3>
+        <p>Once you find a walker your dog loves, they're yours. No rotating strangers, no lockbox surprises.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="pricing">
+      <h2>Simple pricing.<br><em>No subscription required.</em></h2>
+      <p style="color: var(--muted);">Pay per walk. Cancel anytime. First walk is on us.</p>
+      <div class="price-grid">
+        <div class="price-card">
+          <h3>Quick 20</h3>
+          <div class="price">$22</div>
+          <ul>
+            <li>20-minute brisk walk</li>
+            <li>GPS tracking</li>
+            <li>2 photos</li>
+            <li>Same-day available</li>
+          </ul>
+        </div>
+        <div class="price-card featured">
+          <h3>Standard 30</h3>
+          <div class="price">$28</div>
+          <ul>
+            <li>30-minute neighborhood walk</li>
+            <li>GPS tracking</li>
+            <li>3 photos + 1 video</li>
+            <li>Treat + water break</li>
+            <li>Most popular</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <h3>Adventure 60</h3>
+          <div class="price">$48</div>
+          <ul>
+            <li>1-hour park walk</li>
+            <li>Prospect Park route</li>
+            <li>5 photos + report card</li>
+            <li>Perfect for puppies</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The neighborhood trusts us with their <em>best friends</em>.</h2>
+    <div class="testimonials">
+      <div class="quote">
+        <p>"Margot is genuinely sad on the days her walker doesn't come. The GPS photos every afternoon have become the highlight of my work-from-home day."</p>
+        <div class="who">— Sarah K., Park Slope (Margot, 4yo Aussie)</div>
+      </div>
+      <div class="quote">
+        <p>"Booked at 9am for a same-day walk while I was stuck in a meeting. Done by lunch. This is what I always wished Rover was."</p>
+        <div class="who">— David R., Carroll Gardens (Bowie, 7yo Lab)</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="book">
+    <div class="booking">
+      <h2>Ready to book the first walk?</h2>
+      <p>It's free. We'll meet your dog, you meet your walker, no commitment.</p>
+      <form onsubmit="event.preventDefault(); alert('Demo form — in production, this submits to the studio email.');">
+        <input type="text" placeholder="Your name" required />
+        <input type="email" placeholder="Email" required />
+        <input type="text" placeholder="Dog's name + breed (e.g., Margot, Aussie)" required />
+        <select required>
+          <option value="">Neighborhood</option>
+          <option>Park Slope</option>
+          <option>Carroll Gardens</option>
+          <option>Cobble Hill</option>
+          <option>Boerum Hill</option>
+        </select>
+        <button class="btn primary" type="submit">Book my free walk →</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div>© BrooklynPaws · Fully insured & bonded · NYC license #12345</div>
+    <div>hello@brooklynpaws.example · (718) 555-0142</div>
+  </footer>
+
+</div>
+</body>
+</html>

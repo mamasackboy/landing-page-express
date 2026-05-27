@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Payment received — let's build your site</title>
+  <meta name="description" content="Thanks for your order. Send 3 quick details and your site will be live within 24 hours." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <style>
+    .form-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem; margin-top: 2rem;
+    }
+    .field { display: grid; gap: 0.4rem; margin-bottom: 1.25rem; }
+    .field label { font-size: 0.88rem; color: var(--muted); font-family: var(--mono); }
+    .field input, .field textarea {
+      font-family: inherit; font-size: 1rem;
+      background: #0a0a0a; color: var(--fg);
+      border: 1px solid var(--border-strong); border-radius: 10px;
+      padding: 0.85rem 1rem; width: 100%;
+    }
+    .field input:focus, .field textarea:focus {
+      outline: 0; border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    .field textarea { resize: vertical; min-height: 90px; }
+    .success { background: #10b98115; border: 1px solid #10b981; color: #10b981; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="wrap" style="position:relative;">
+    <div class="hero-bg"></div>
+
+    <nav class="top">
+      <div class="brand">Landing Page<span>.</span> Express</div>
+      <div class="meta">order received</div>
+    </nav>
+
+    <header style="padding: 4rem 0 1rem;">
+      <span class="eyebrow"><span class="dot"></span>Payment confirmed</span>
+      <h1>Thanks. <em>Now I need 3 things.</em></h1>
+      <p class="lede">Fill this out and your site goes into the build queue. Most deliveries ship in 4–6 hours, never more than 24.</p>
+    </header>
+
+    <section style="padding-top: 1rem;">
+      <div class="form-card">
+        <form
+          action="https://formsubmit.co/gabbokbiz@gmail.com"
+          method="POST"
+          id="intake-form"
+        >
+          <!-- Formsubmit config -->
+          <input type="hidden" name="_subject" value="🎉 New $99 site order — intake from client" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="thanks-submitted.html" />
+          <input type="hidden" name="_autoresponse" value="Got it — your site is in the queue. I'll send you a live URL within 24 hours (usually 4-6). Reply to this email if anything urgent comes up." />
+
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="Name" type="text" required autocomplete="name" />
+          </div>
+
+          <div class="field">
+            <label for="email">Email (where I send the URL + repo invite)</label>
+            <input id="email" name="Email" type="email" required autocomplete="email" />
+          </div>
+
+          <div class="field">
+            <label for="business">1. Business name</label>
+            <input id="business" name="Business name" type="text" required />
+          </div>
+
+          <div class="field">
+            <label for="sell">2. What you sell, in 1 sentence</label>
+            <textarea id="sell" name="What you sell" required placeholder="e.g. Weekly meal-prep delivery for busy parents in Brooklyn"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="buyer">3. Who buys it (your ideal customer)</label>
+            <textarea id="buyer" name="Ideal customer" required placeholder="e.g. Working parents with kids under 10, household income $90k+, value time over money"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="vibe">Optional: vibe, colors, sites you like the look of</label>
+            <textarea id="vibe" name="Vibe + references" placeholder="e.g. Warm and inviting, like haus.com or magic-spoon.com. Brand color is forest green."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="domain">Optional: your domain (if you have one) and where you bought it</label>
+            <input id="domain" name="Domain" type="text" placeholder="e.g. mealprep.com (bought on Namecheap)" />
+          </div>
+
+          <button class="btn primary" type="submit" style="width: 100%; justify-content: center; padding: 1.1rem;">
+            Send intake — start the build &rarr;
+          </button>
+          <p class="cta-note" style="margin-top: 1rem; text-align: center;">
+            You'll get a confirmation email immediately. The live URL lands in the same inbox within 24 hours.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <h2>What happens next?</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>Right now</h3>
+          <p>Your intake hits my inbox the moment you hit submit. I'll confirm receipt within 1 hour.</p>
+        </div>
+        <div class="step">
+          <h3>Within 4–6 hours</h3>
+          <p>I send you a preview URL with the first build. You review and reply with any changes.</p>
+        </div>
+        <div class="step">
+          <h3>Within 24 hours</h3>
+          <p>Final site live at the URL of your choice. GitHub repo invitation sent to your email.</p>
+        </div>
+        <div class="step">
+          <h3>Anytime after</h3>
+          <p>Email me with questions or "I want a v2." First fix is on me — assume good faith always.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>If you didn't get a confirmation email in 5 minutes, check spam or email directly.</div>
+      <div>Order #{{date}}</div>
+    </footer>
+
+  </div>
+
+  <script src="config.js" defer></script>
+  <script>
+    // Mark the order with a timestamp in the footer for traceability
+    document.addEventListener("DOMContentLoaded", () => {
+      const stamp = new Date().toISOString().replace(/[-:T.]/g, "").slice(2, 12);
+      document.querySelectorAll("footer div").forEach((el) => {
+        el.innerHTML = el.innerHTML.replace("{{date}}", stamp);
+      });
+    });
+  </script>
+</body>
+</html>
