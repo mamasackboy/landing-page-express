@@ -5,6 +5,8 @@
 
 The site is live at **https://mamasackboy.github.io/landing-page-express/** and the repo is **https://github.com/mamasackboy/landing-page-express**.
 
+Local checkout lives at `C:\Users\drama\Documents\landing-page-express\`.
+
 ---
 
 ## 🚦 To go live, do this one thing
@@ -34,7 +36,7 @@ A yellow banner appears on every page while the placeholder is in place, so you 
 ## What's in this repo
 
 ```
-money-day/
+landing-page-express/
 ├── config.js                ← THE ONE FILE YOU EDIT (Stripe link goes here)
 ├── index.html               ← Sales page (the live URL above)
 ├── thanks.html              ← Post-purchase intake form (3 questions → your email)
@@ -93,7 +95,7 @@ Want a different inbox? Edit the `action="..."` attribute in `thanks.html` (line
 
 ```bash
 # Spin up a local server
-cd /c/Users/drama/money-day
+cd /c/Users/drama/Documents/landing-page-express
 python -m http.server 8000
 # Then open http://localhost:8000/
 ```
