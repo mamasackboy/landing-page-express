@@ -66,14 +66,13 @@
   .hero {
     display: grid; grid-template-columns: 1fr;
     padding: 3rem 1.5rem 0;
-    max-width: 1200px; margin: 0 auto;
     gap: 2.5rem;
   }
   @media (min-width: 800px) {
     .hero {
       grid-template-columns: 5fr 6fr;
-      padding: 5rem max(1.5rem, calc((100vw - 1200px) / 2)) 0;
-      gap: 4rem; align-items: center;
+      padding: 4rem 0 0 max(2rem, calc((100vw - 1200px) / 2 + 2rem));
+      gap: 3rem; align-items: end;
     }
   }
   .hero-text { padding-bottom: 2rem; }
@@ -113,8 +112,7 @@
   }
   @media (min-width: 800px) {
     .hero-img {
-      margin-right: calc(-1 * max(1.5rem, (100vw - 1200px) / 2));
-      height: 85vh; max-height: 720px; min-height: 480px;
+      height: 78vh; max-height: 640px; min-height: 400px;
     }
   }
   .hero-img img {
