@@ -112,7 +112,10 @@ async function run() {
       ? ok("No console errors")
       : bad("Console errors", JSON.stringify(realErrors));
 
-    // Wait for portfolio thumbs to fully load so the screenshot captures them
+    // Wait for portfolio thumbs to fully load AND force a scroll cycle.
+    // Playwright's fullPage screenshot doesn't always repaint freshly-loaded
+    // images unless the page has been scrolled — without this, thumbs appear
+    // as empty boxes in the captured PNG even when the DOM is correct.
     await page.waitForFunction(
       () => {
         const imgs = Array.from(document.querySelectorAll(".sample .thumb img"));
@@ -120,6 +123,10 @@ async function run() {
       },
       { timeout: 10000 },
     ).catch(() => warn("Thumbs didn't finish loading in 10s"));
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await page.waitForTimeout(600);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(300);
     await shot(page, "01-index-desktop");
 
     // ── 2. Pay button → alert (placeholder mode) ────────────────────────────
