@@ -25,7 +25,7 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; font-size: clamp(1rem, 0.4rem + 0.55vw, 1.45rem); }
   body {
     background: var(--bg); color: var(--fg);
     font-family: "Outfit", system-ui, sans-serif;
@@ -33,14 +33,14 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  .container { padding: 0; }
 
   /* ── Nav ──────────────────────────────────── */
 
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 50;
     display: flex; justify-content: space-between; align-items: center;
-    padding: 1.25rem 2rem;
+    padding: 1.25rem max(1.5rem, calc((100vw - min(2000px, 72vw)) / 2));
     background: rgba(250, 246, 240, 0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -86,6 +86,7 @@
     display: flex;
     align-items: flex-end;
     overflow: hidden;
+    padding: 0;
   }
 
   .hero-bg {
@@ -128,7 +129,7 @@
   }
   @media (min-width: 800px) {
     .hero-content {
-      margin-left: max(2rem, calc((100vw - 1100px) / 2));
+      margin-left: max(2rem, calc((100vw - min(2000px, 72vw)) / 2));
       padding: 6rem 0;
     }
   }
@@ -187,7 +188,7 @@
 
   /* ── Section rhythm ─────────────────────────── */
 
-  section { padding: 5rem 0; }
+  section { padding: 5rem max(1.5rem, calc((100vw - min(2000px, 72vw)) / 2)); }
   section + section { border-top: 1px solid var(--border); }
 
   .section-eyebrow {
@@ -239,7 +240,7 @@
   /* ── Pull quote ─────────────────────────────── */
 
   .pullquote {
-    padding: 5rem 2rem;
+    padding: 5rem max(1.5rem, calc((100vw - min(1200px, 55vw)) / 2));
     text-align: center;
     border-top: 1px solid var(--border);
   }
@@ -360,11 +361,10 @@
   /* ── Footer ─────────────────────────────────── */
 
   footer {
-    padding: 2.5rem 2rem; color: var(--muted);
+    padding: 2.5rem max(1.5rem, calc((100vw - min(2000px, 72vw)) / 2)); color: var(--muted);
     font-size: 0.82rem; border-top: 1px solid var(--border);
   }
   .footer-inner {
-    max-width: 1100px; margin: 0 auto;
     display: flex; justify-content: space-between;
     flex-wrap: wrap; gap: 1rem;
   }

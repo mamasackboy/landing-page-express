@@ -34,7 +34,7 @@
   nav {
     position: sticky; top: 0; z-index: 90;
     display: flex; justify-content: space-between; align-items: center;
-    padding: 1.25rem max(1.5rem, calc((100vw - 1100px) / 2));
+    padding: 1.25rem max(1.5rem, calc((100vw - min(2000px, 72vw)) / 2));
     background: rgba(246,242,234,0.92);
     backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(0,0,0,0.04);
@@ -71,7 +71,7 @@
   @media (min-width: 800px) {
     .hero {
       grid-template-columns: 5fr 6fr;
-      padding: 4rem 0 0 max(2rem, calc((100vw - min(1400px, 78vw)) / 2 + 2rem));
+      padding: 4rem 0 0 max(2rem, calc((100vw - min(2200px, 78vw)) / 2 + 2rem));
       gap: 3rem; align-items: end;
     }
   }
@@ -139,7 +139,7 @@
   @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
   /* ── SHARED SECTION ── */
-  section { padding: 5rem max(1.5rem, calc((100vw - min(1300px, 72vw)) / 2)); }
+  section { padding: 5rem max(1.5rem, calc((100vw - min(2000px, 72vw)) / 2)); }
   h2 {
     font-family: "Literata", Georgia, serif;
     font-size: clamp(1.9rem, 3.5vw, 2.8rem);
@@ -178,7 +178,7 @@
   .schedule-section { background: var(--warm); }
   .schedule-grid { margin-top: 1.5rem; border-top: 1px solid var(--border); }
   .sched-row {
-    display: grid; grid-template-columns: 110px 1fr 160px 90px;
+    display: grid; grid-template-columns: minmax(5rem, 7rem) 1fr minmax(6rem, 10rem) minmax(4rem, 5.5rem);
     gap: 1rem; padding: 1.25rem 0;
     border-bottom: 1px solid var(--border); align-items: center;
     font-size: 0.95rem;
@@ -203,7 +203,7 @@
 
   /* ── PULL QUOTE ── */
   .pull-quote {
-    padding: 4rem max(1.5rem, calc((100vw - min(900px, 55vw)) / 2));
+    padding: 4rem max(1.5rem, calc((100vw - min(1200px, 55vw)) / 2));
     text-align: center;
   }
   .pull-quote p {
@@ -319,7 +319,7 @@
 
   /* ── FOOTER ── */
   footer {
-    padding: 2.5rem max(1.5rem, calc((100vw - min(1300px, 72vw)) / 2));
+    padding: 2.5rem max(1.5rem, calc((100vw - min(2000px, 72vw)) / 2));
     color: var(--dim); font-size: 0.82rem;
     display: flex; justify-content: space-between;
     flex-wrap: wrap; gap: 1rem;
