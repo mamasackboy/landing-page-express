@@ -272,8 +272,16 @@ ul.checks li:last-child { border: 0; }
   position: relative;
 }
 .sample:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 30px 60px -25px rgba(255, 85, 0, 0.4); }
-.sample .thumb { aspect-ratio: 16/10; position: relative; overflow: hidden; }
-.sample .thumb svg { width: 100%; height: 100%; display: block; }
+.sample .thumb {
+  aspect-ratio: 16/10; position: relative; overflow: hidden;
+  background: #0e0e0e;
+  border-bottom: 1px solid var(--border);
+}
+.sample .thumb svg, .sample .thumb img {
+  width: 100%; height: 100%; display: block; object-fit: cover; object-position: top center;
+  transition: transform 0.5s cubic-bezier(0.22, 0.68, 0, 1);
+}
+.sample:hover .thumb img { transform: scale(1.03); }
 .sample .meta { padding: 1.5rem; }
 .sample .meta h3 { margin-bottom: 0.3rem; font-size: 1.15rem; }
 .sample .meta p { font-size: 0.92rem; }

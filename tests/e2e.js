@@ -196,6 +196,29 @@ async function run() {
     openCount = await page.locator('.faq-item[data-open="true"]').count();
     openCount === 0 ? ok("Clicking open FAQ closes it") : bad("FAQ toggle close broken", String(openCount));
 
+    // ── 4.5. Portfolio thumbs are real images that actually loaded ──────────
+    section("4.5. Portfolio thumbs (real screenshots, not SVG placeholders)");
+    const thumbs = await page.evaluate(() => {
+      const imgs = Array.from(document.querySelectorAll(".sample .thumb img"));
+      return imgs.map((img) => ({
+        src: img.getAttribute("src"),
+        complete: img.complete,
+        naturalW: img.naturalWidth,
+        naturalH: img.naturalHeight,
+      }));
+    });
+    if (thumbs.length === 0) {
+      bad("No <img> thumbs found in gallery");
+    } else {
+      thumbs.forEach((t, i) => {
+        if (t.complete && t.naturalW > 100) {
+          ok(`Thumb ${i + 1} loaded`, `${t.src} (${t.naturalW}×${t.naturalH})`);
+        } else {
+          bad(`Thumb ${i + 1} broken`, JSON.stringify(t));
+        }
+      });
+    }
+
     // ── 5. Portfolio samples ────────────────────────────────────────────────
     section("5. Portfolio samples");
     await page.locator('a.sample[href*="dogwalker"]').click();
