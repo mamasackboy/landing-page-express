@@ -112,6 +112,14 @@ async function run() {
       ? ok("No console errors")
       : bad("Console errors", JSON.stringify(realErrors));
 
+    // Wait for portfolio thumbs to fully load so the screenshot captures them
+    await page.waitForFunction(
+      () => {
+        const imgs = Array.from(document.querySelectorAll(".sample .thumb img"));
+        return imgs.length > 0 && imgs.every((i) => i.complete && i.naturalWidth > 100);
+      },
+      { timeout: 10000 },
+    ).catch(() => warn("Thumbs didn't finish loading in 10s"));
     await shot(page, "01-index-desktop");
 
     // ── 2. Pay button → alert (placeholder mode) ────────────────────────────
