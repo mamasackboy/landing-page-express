@@ -9,302 +9,516 @@
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400;1,7..72,500&family=DM+Sans:wght@400;500;600&display=swap" />
 <style>
   :root {
-    --bg: #fafaf7;
-    --fg: #1a1a1a;
-    --muted: #6b6b6b;
-    --accent: #4a5d4a;
-    --accent-light: #d4dbcc;
-    --cream: #f5f1e8;
-    --gold: #b8956a;
+    --bg: #f6f2ea;
+    --fg: #2a2117;
+    --muted: #786a5a;
+    --dim: #a89b8a;
+    --accent: #4a3a26;
+    --accent-hover: #352a1a;
+    --accent-soft: #ede4d2;
+    --gold: #b08840;
+    --sage: #5a6e52;
+    --warm: #ede4d2;
+    --border: #ddd4c4;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { background: var(--bg); color: var(--fg); font-family: "Inter", system-ui, sans-serif; line-height: 1.6; }
-  body { padding: 0 1.5rem; }
-  .wrap { max-width: 1200px; margin: 0 auto; }
+  html { background: var(--bg); color: var(--fg); scroll-behavior: smooth; }
+  body { font-family: "DM Sans", system-ui, sans-serif; line-height: 1.65; font-size: 1rem; }
 
-  .sample-badge { position: fixed; top: 1rem; right: 1rem; background: #000; color: #fff; padding: 0.5rem 0.9rem; border-radius: 999px; font-size: 0.75rem; font-family: ui-monospace, monospace; z-index: 100; }
-  .sample-badge a { color: var(--gold); text-decoration: none; margin-left: 0.5rem; }
+  .sample-badge { position: fixed; top: 1rem; right: 1rem; background: var(--accent); color: #fff; padding: 0.5rem 0.9rem; border-radius: 999px; font-size: 0.75rem; font-family: ui-monospace, monospace; z-index: 100; text-decoration: none; }
 
-  nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; }
-  nav .logo { font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.5rem; font-weight: 500; letter-spacing: 0.05em; }
-  nav .menu a { color: var(--fg); text-decoration: none; margin-left: 2rem; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; }
-  nav .menu a.book { background: var(--accent); color: white; padding: 0.65rem 1.2rem; }
-
-  .hero { padding: 4rem 0 6rem; display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
-  @media (min-width: 800px) { .hero { grid-template-columns: 1fr 1fr; } }
-  .hero h1 { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 2rem; }
-  .hero h1 em { font-style: italic; color: var(--accent); }
-  .hero p.lede { font-size: 1.12rem; color: var(--muted); margin-bottom: 2.5rem; max-width: 30rem; line-height: 1.7; }
-  .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.95rem 1.75rem; text-decoration: none; font-weight: 500; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; border: 0; cursor: pointer; font-family: inherit; }
-  .btn.primary { background: var(--accent); color: white; }
-  .btn.primary:hover { background: #3a4a3a; }
-  .btn.ghost { color: var(--accent); border: 1px solid var(--accent); background: transparent; }
-
-  .hero-art {
-    aspect-ratio: 4/5; overflow: hidden; position: relative;
-    background: var(--cream);
-    box-shadow: 0 30px 60px -25px rgba(74, 93, 74, 0.4);
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 90;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem max(1.5rem, calc((100vw - 1100px) / 2));
+    background: rgba(246,242,234,0.92);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
   }
-  .hero-art img, .hero-art svg { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .nav-mark {
+    font-family: "Literata", Georgia, serif;
+    font-size: 1.25rem; font-weight: 500;
+    letter-spacing: 0.03em; color: var(--fg);
+  }
+  .nav-links { display: flex; align-items: center; gap: 2.25rem; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--fg); }
+  .nav-cta {
+    background: var(--accent); color: #fff !important;
+    padding: 0.6rem 1.2rem; border-radius: 6px;
+    font-weight: 500;
+  }
+  .nav-cta:hover { background: var(--accent-hover); }
+  @media (max-width: 699px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links a:not(.nav-cta) { display: none; }
+  }
 
-  .marquee { background: var(--cream); padding: 1.25rem 0; overflow: hidden; white-space: nowrap; margin: 0 -1.5rem 5rem; }
-  .marquee-track { display: inline-block; animation: scroll 35s linear infinite; }
-  .marquee span { display: inline-block; font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; color: var(--accent); font-size: 1.2rem; margin: 0 2rem; }
-  .marquee span::after { content: " · "; color: var(--gold); margin-left: 1rem; }
-  @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  /* ── HERO ── */
+  .hero {
+    display: grid; grid-template-columns: 1fr;
+    padding: 3rem 1.5rem 0;
+    max-width: 1200px; margin: 0 auto;
+    gap: 2.5rem;
+  }
+  @media (min-width: 800px) {
+    .hero {
+      grid-template-columns: 5fr 6fr;
+      padding: 5rem max(1.5rem, calc((100vw - 1200px) / 2)) 0;
+      gap: 4rem; align-items: center;
+    }
+  }
+  .hero-text { padding-bottom: 2rem; }
+  .eyebrow {
+    display: block; font-size: 0.78rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem;
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-family: "Literata", Georgia, serif;
+    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+    font-weight: 400; line-height: 1.08;
+    letter-spacing: -0.01em; margin-bottom: 1.75rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero .lede {
+    font-size: 1.05rem; color: var(--muted);
+    line-height: 1.75; max-width: 28rem; margin-bottom: 2.25rem;
+  }
+  .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
 
-  section { padding: 5rem 0; }
-  .eyebrow { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-  h2 { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 2rem; max-width: 32rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.9rem 1.6rem; text-decoration: none;
+    font-weight: 500; font-size: 0.85rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border: 0; cursor: pointer; font-family: inherit;
+    border-radius: 6px; transition: background 0.15s, color 0.15s;
+  }
+  .btn.primary { background: var(--accent); color: #fff; }
+  .btn.primary:hover { background: var(--accent-hover); }
+  .btn.ghost { color: var(--accent); border: 1px solid var(--border); background: transparent; }
+  .btn.ghost:hover { border-color: var(--accent); }
 
-  .approach { display: grid; grid-template-columns: 1fr; gap: 3rem; }
-  @media (min-width: 800px) { .approach { grid-template-columns: repeat(3, 1fr); } }
-  .pillar { padding-top: 2rem; border-top: 1px solid var(--accent); }
-  .pillar .num { font-family: "Cormorant Garamond", Georgia, serif; font-size: 2rem; color: var(--gold); font-style: italic; margin-bottom: 1rem; }
-  .pillar h3 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.5rem; font-weight: 500; margin-bottom: 0.75rem; }
-  .pillar p { color: var(--muted); line-height: 1.7; }
-
-  .schedule { background: var(--cream); padding: 4rem 3rem; }
-  .schedule-grid { margin-top: 2rem; border-top: 1px solid var(--accent-light); }
-  .schedule-row { display: grid; grid-template-columns: 110px 1fr 160px 90px; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px solid var(--accent-light); align-items: center; font-size: 0.95rem; }
-  @media (max-width: 600px) { .schedule-row { grid-template-columns: 90px 1fr; gap: 0.5rem; } .schedule-row .teacher, .schedule-row .spots { display: none; } .schedule-row.head .teacher, .schedule-row.head .spots { display: none; } }
-  .schedule-row.head { color: var(--muted); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
-  .schedule-row .class { font-weight: 500; }
-  .schedule-row .teacher { color: var(--muted); font-style: italic; font-family: "Cormorant Garamond", Georgia, serif; }
-  .schedule-row .spots { color: var(--gold); font-size: 0.85rem; }
-  .schedule-row .spots.full { color: var(--muted); }
-
-  .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-  @media (min-width: 700px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); } }
-  .price-card { padding: 2.5rem; border: 1px solid var(--accent-light); position: relative; }
-  .price-card.feat { background: var(--accent); color: white; border-color: var(--accent); }
-  .price-card.feat .gold { color: #e8d4a8; }
-  .price-card h3 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.75rem; font-weight: 500; margin-bottom: 0.5rem; }
-  .price-card .price { font-family: "Cormorant Garamond", Georgia, serif; font-size: 3rem; font-weight: 400; margin: 1.5rem 0; }
-  .price-card .price small { font-size: 1rem; opacity: 0.7; }
-  .price-card ul { list-style: none; padding: 0; margin-bottom: 2rem; }
-  .price-card li { padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; }
-  .price-card.feat li { border-color: rgba(255,255,255,0.15); }
-
-  .instructors { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-  @media (min-width: 700px) { .instructors { grid-template-columns: repeat(3, 1fr); } }
-  .teacher-card { text-align: center; }
-  .teacher-photo {
-    aspect-ratio: 1/1; border-radius: 50%; margin: 0 auto 1.5rem;
-    width: 60%; max-width: 180px;
-    background: linear-gradient(135deg, var(--accent-light) 0%, var(--cream) 100%);
+  .hero-img {
     position: relative; overflow: hidden;
   }
-  .teacher-photo::after {
-    content: ""; position: absolute; inset: 20% 25%; bottom: 0;
-    background: linear-gradient(180deg, transparent 0%, var(--accent) 100%);
-    opacity: 0.25; border-radius: 50% 50% 0 0;
+  @media (min-width: 800px) {
+    .hero-img {
+      margin-right: calc(-1 * max(1.5rem, (100vw - 1200px) / 2));
+      height: 85vh; max-height: 720px; min-height: 480px;
+    }
   }
-  .teacher-card h3 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.4rem; font-weight: 500; margin-bottom: 0.25rem; }
-  .teacher-card .role { color: var(--gold); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
-  .teacher-card p { color: var(--muted); font-size: 0.95rem; }
+  .hero-img img {
+    width: 100%; height: 100%; display: block; object-fit: cover;
+  }
+  @media (max-width: 799px) {
+    .hero-img { aspect-ratio: 4/5; max-height: 500px; }
+  }
 
-  .visit { background: var(--accent); color: white; padding: 5rem 3rem; text-align: center; }
-  .visit h2 { color: white; margin: 0 auto 1.5rem; }
-  .visit p { font-size: 1.1rem; opacity: 0.85; max-width: 30rem; margin: 0 auto 2.5rem; }
-  .visit .btn.primary { background: white; color: var(--accent); }
+  /* ── MARQUEE ── */
+  .marquee {
+    background: var(--warm); padding: 1.1rem 0;
+    overflow: hidden; white-space: nowrap;
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .marquee-track { display: inline-block; animation: marquee-scroll 30s linear infinite; }
+  .marquee span {
+    display: inline-block;
+    font-family: "Literata", Georgia, serif; font-style: italic;
+    color: var(--accent); font-size: 1.05rem;
+    margin: 0 2.5rem;
+  }
+  .marquee span::after { content: "·"; color: var(--gold); margin-left: 2.5rem; }
+  @keyframes marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-  footer { padding: 3rem 0; color: var(--muted); font-size: 0.85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 1px solid var(--accent-light); margin-top: 3rem; }
+  /* ── SHARED SECTION ── */
+  section { padding: 5rem max(1.5rem, calc((100vw - 1000px) / 2)); }
+  h2 {
+    font-family: "Literata", Georgia, serif;
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    font-weight: 400; line-height: 1.12;
+    letter-spacing: -0.01em; margin-bottom: 2.5rem;
+    max-width: 30rem;
+  }
+  h2 em { font-style: italic; color: var(--gold); }
+
+  /* ── APPROACH: horizontal rule-separated blocks ── */
+  .pillars { display: grid; gap: 0; }
+  .pillar {
+    display: grid; grid-template-columns: 60px 1fr;
+    gap: 1.5rem; padding: 2.25rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .pillar:last-child { border-bottom: 1px solid var(--border); }
+  .pillar-num {
+    font-family: "Literata", Georgia, serif;
+    font-size: 2rem; font-style: italic;
+    color: var(--gold); line-height: 1;
+    padding-top: 0.2rem;
+  }
+  .pillar h3 {
+    font-family: "Literata", Georgia, serif;
+    font-size: 1.35rem; font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+  .pillar p { color: var(--muted); line-height: 1.75; max-width: 38rem; }
+  @media (min-width: 700px) {
+    .pillar { grid-template-columns: 80px 1fr; gap: 2rem; }
+    .pillar-num { font-size: 2.5rem; }
+  }
+
+  /* ── SCHEDULE ── */
+  .schedule-section { background: var(--warm); }
+  .schedule-grid { margin-top: 1.5rem; border-top: 1px solid var(--border); }
+  .sched-row {
+    display: grid; grid-template-columns: 110px 1fr 160px 90px;
+    gap: 1rem; padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border); align-items: center;
+    font-size: 0.95rem;
+  }
+  .sched-row.head {
+    color: var(--dim); font-size: 0.75rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 500; padding-bottom: 0.75rem;
+  }
+  .sched-row .class-name { font-weight: 500; }
+  .sched-row .teacher {
+    color: var(--muted); font-style: italic;
+    font-family: "Literata", Georgia, serif;
+  }
+  .sched-row .spots { color: var(--gold); font-size: 0.85rem; font-weight: 500; }
+  .sched-row .spots.full { color: var(--dim); font-weight: 400; }
+  @media (max-width: 600px) {
+    .sched-row { grid-template-columns: 90px 1fr; gap: 0.5rem; }
+    .sched-row .teacher, .sched-row .spots { display: none; }
+    .sched-row.head .teacher, .sched-row.head .spots { display: none; }
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    padding: 4rem max(1.5rem, calc((100vw - 800px) / 2));
+    text-align: center;
+  }
+  .pull-quote p {
+    font-family: "Literata", Georgia, serif;
+    font-style: italic; font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+    line-height: 1.6; color: var(--fg); max-width: 640px; margin: 0 auto;
+  }
+  .pull-quote cite {
+    display: block; margin-top: 1.25rem;
+    font-style: normal; font-size: 0.85rem; color: var(--dim);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── PRICING: featured intro + compact rows ── */
+  .pricing-lead {
+    background: var(--accent); color: #fff;
+    border-radius: 12px; padding: 2.5rem;
+    display: grid; grid-template-columns: 1fr;
+    gap: 2rem; margin-bottom: 2rem;
+  }
+  @media (min-width: 600px) {
+    .pricing-lead {
+      grid-template-columns: 1fr auto;
+      align-items: center; padding: 3rem;
+    }
+  }
+  .pricing-lead h3 {
+    font-family: "Literata", Georgia, serif;
+    font-size: 1.6rem; font-weight: 500;
+    color: #fff; margin-bottom: 0.5rem;
+  }
+  .pricing-lead .pl-desc {
+    color: rgba(255,255,255,0.75); font-size: 0.95rem; line-height: 1.7;
+  }
+  .pricing-lead .pl-action { text-align: center; }
+  .pricing-lead .pl-price {
+    display: block; font-family: "Literata", Georgia, serif;
+    font-size: 3.2rem; font-weight: 400; color: #fff;
+    margin-bottom: 1rem; line-height: 1;
+  }
+  .pricing-lead .btn.primary {
+    background: #fff; color: var(--accent);
+    width: 100%;
+  }
+  .pricing-lead .btn.primary:hover { background: var(--accent-soft); }
+  .pricing-lead .pl-note {
+    display: block; margin-top: 0.75rem;
+    font-size: 0.78rem; color: rgba(255,255,255,0.55);
+  }
+
+  .plan-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 1.5rem 0; border-bottom: 1px solid var(--border);
+    flex-wrap: wrap; gap: 0.5rem;
+  }
+  .plan-row:first-child { border-top: 1px solid var(--border); }
+  .plan-row h4 {
+    font-family: "Literata", Georgia, serif;
+    font-size: 1.2rem; font-weight: 500; margin-bottom: 0.25rem;
+  }
+  .plan-row .plan-details { color: var(--muted); font-size: 0.9rem; }
+  .plan-row .plan-price {
+    font-family: "Literata", Georgia, serif;
+    font-size: 1.5rem; font-weight: 400;
+    white-space: nowrap; color: var(--fg);
+  }
+  .plan-row .plan-price small { font-size: 0.85rem; color: var(--dim); }
+
+  /* ── TEAM: editorial text, no cards ── */
+  .team { display: grid; gap: 0; }
+  .team-member {
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .team-member:last-child { border-bottom: 1px solid var(--border); }
+  @media (min-width: 700px) {
+    .team-member {
+      display: grid; grid-template-columns: 240px 1fr;
+      gap: 2rem; align-items: baseline;
+    }
+  }
+  .team-member h3 {
+    font-family: "Literata", Georgia, serif;
+    font-size: 1.4rem; font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+  .team-member .role {
+    display: block; font-size: 0.78rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+  @media (min-width: 700px) {
+    .team-member .role { margin-bottom: 0; }
+  }
+  .team-member p { color: var(--muted); line-height: 1.75; max-width: 36rem; }
+
+  /* ── VISIT ── */
+  .visit-section {
+    background: var(--warm); text-align: center;
+    padding-top: 5rem; padding-bottom: 5rem;
+  }
+  .visit-section h2 { margin: 0 auto 1.25rem; text-align: center; }
+  .visit-section .visit-lede {
+    font-size: 1.05rem; color: var(--muted);
+    max-width: 32rem; margin: 0 auto 2.25rem;
+    line-height: 1.75;
+  }
+  .visit-section .visit-note {
+    display: block; margin-top: 1.5rem;
+    font-size: 0.82rem; color: var(--dim);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2.5rem max(1.5rem, calc((100vw - 1000px) / 2));
+    color: var(--dim); font-size: 0.82rem;
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    border-top: 1px solid var(--border);
+  }
 </style>
 </head>
 <body>
 
-<a class="sample-badge" href="../../" aria-label="Back to Landing Page Express portfolio">← portfolio sample · back to Landing Page Express</a>
+<a class="sample-badge" href="../../" aria-label="Back to Landing Page Express portfolio">&larr; portfolio sample &middot; back to Landing Page Express</a>
 
-<div class="wrap">
+<nav>
+  <div class="nav-mark">Riverside Pilates</div>
+  <div class="nav-links">
+    <a href="#approach">Approach</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#pricing">Pricing</a>
+    <a class="nav-cta" href="#visit">Book intro</a>
+  </div>
+</nav>
 
-  <nav>
-    <div class="logo">Riverside Pilates</div>
-    <div class="menu">
-      <a href="#approach">Approach</a>
-      <a href="#schedule">Schedule</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#visit" class="book">Book intro</a>
-    </div>
-  </nav>
-
-  <section class="hero">
-    <div>
-      <div class="eyebrow">Hudson, NY · est. 2019</div>
-      <h1>Strength, <em>without the rush</em>.</h1>
-      <p class="lede">Small-group reformer Pilates in a converted 1880s carriage house on the river. Six classmates, two instructors per class, real attention to your body. Intro 3-pack is $59.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="#visit">Book intro pack</a>
-        <a class="btn ghost" href="#schedule">See schedule</a>
-      </div>
-    </div>
-
-    <div class="hero-art">
-      <img src="img/hero.png" alt="Sunlit interior of a converted 1880s carriage house pilates studio in Hudson NY — a wooden reformer in the foreground, tall arched window, polished oak floors, an olive plant in the corner" width="928" height="1152" fetchpriority="high" decoding="async" />
-    </div>
-  </section>
-
-  <div class="marquee">
-    <div class="marquee-track">
-      <span>Six students per class</span>
-      <span>Two instructors</span>
-      <span>1880s carriage house</span>
-      <span>Hudson River views</span>
-      <span>Six students per class</span>
-      <span>Two instructors</span>
-      <span>1880s carriage house</span>
-      <span>Hudson River views</span>
+<section class="hero">
+  <div class="hero-text">
+    <span class="eyebrow">Hudson, NY &middot; est. 2019</span>
+    <h1>Strength,<br><em>without the rush.</em></h1>
+    <p class="lede">Small-group reformer Pilates in a converted 1880s carriage house on the river. Six classmates, two instructors per class, real attention to your body. Intro 3-pack is $59.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#visit">Book intro pack</a>
+      <a class="btn ghost" href="#schedule">See schedule</a>
     </div>
   </div>
+  <div class="hero-img">
+    <img src="img/hero.png" alt="Sunlit interior of a converted 1880s carriage house pilates studio in Hudson NY with a wooden reformer, tall arched window, polished oak floors, and an olive tree" width="928" height="1152" fetchpriority="high" decoding="async" />
+  </div>
+</section>
 
-  <section id="approach">
-    <div class="eyebrow">Our approach</div>
-    <h2>The opposite of a <em>fitness factory</em>.</h2>
-    <div class="approach">
-      <div class="pillar">
-        <div class="num">01</div>
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Six students per class</span>
+    <span>Two instructors</span>
+    <span>1880s carriage house</span>
+    <span>Hudson River views</span>
+    <span>Six students per class</span>
+    <span>Two instructors</span>
+    <span>1880s carriage house</span>
+    <span>Hudson River views</span>
+  </div>
+</div>
+
+<section id="approach">
+  <span class="eyebrow">Our approach</span>
+  <h2>The opposite of a <em>fitness factory.</em></h2>
+  <div class="pillars">
+    <div class="pillar">
+      <span class="pillar-num">01</span>
+      <div>
         <h3>Small groups, always</h3>
         <p>Six reformers, six students, two instructors. You will be seen, corrected, and called by name in every class.</p>
       </div>
-      <div class="pillar">
-        <div class="num">02</div>
+    </div>
+    <div class="pillar">
+      <span class="pillar-num">02</span>
+      <div>
         <h3>Form over flash</h3>
         <p>We don't do trendy hybrids or 75-cue power flows. Classical reformer work, paced so your body actually learns it.</p>
       </div>
-      <div class="pillar">
-        <div class="num">03</div>
+    </div>
+    <div class="pillar">
+      <span class="pillar-num">03</span>
+      <div>
         <h3>Built for sticky knees</h3>
         <p>Most of our regulars came in with an old running injury, a desk-job back, or a postpartum core. We meet bodies where they are.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="schedule" class="schedule">
-    <div class="eyebrow">This week</div>
-    <h2 style="margin-bottom: 1.5rem;">Schedule.</h2>
-    <div class="schedule-grid">
-      <div class="schedule-row head">
-        <div>Day</div>
-        <div>Class</div>
-        <div class="teacher">Instructor</div>
-        <div class="spots">Spots</div>
-      </div>
-      <div class="schedule-row">
-        <div><strong>Mon</strong> 7:00a</div>
-        <div class="class">Reformer Foundations</div>
-        <div class="teacher">Elena</div>
-        <div class="spots">2 left</div>
-      </div>
-      <div class="schedule-row">
-        <div><strong>Mon</strong> 6:30p</div>
-        <div class="class">Reformer Intermediate</div>
-        <div class="teacher">Marc</div>
-        <div class="spots full">Full</div>
-      </div>
-      <div class="schedule-row">
-        <div><strong>Wed</strong> 9:00a</div>
-        <div class="class">Reformer + Tower</div>
-        <div class="teacher">Elena · Sasha</div>
-        <div class="spots">4 left</div>
-      </div>
-      <div class="schedule-row">
-        <div><strong>Wed</strong> 12:00p</div>
-        <div class="class">Lunchtime Quick Flow</div>
-        <div class="teacher">Marc</div>
-        <div class="spots">3 left</div>
-      </div>
-      <div class="schedule-row">
-        <div><strong>Sat</strong> 10:00a</div>
-        <div class="class">Slow Saturday</div>
-        <div class="teacher">Sasha</div>
-        <div class="spots">5 left</div>
-      </div>
+<section id="schedule" class="schedule-section">
+  <span class="eyebrow">This week</span>
+  <h2>Schedule.</h2>
+  <div class="schedule-grid">
+    <div class="sched-row head">
+      <div>Day</div>
+      <div>Class</div>
+      <div class="teacher">Instructor</div>
+      <div class="spots">Spots</div>
     </div>
-  </section>
-
-  <section id="pricing">
-    <div class="eyebrow">Pricing</div>
-    <h2>No contracts. <em>No autopay traps.</em></h2>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <h3>Intro 3-pack</h3>
-        <div class="price">$59</div>
-        <ul>
-          <li>3 classes in 30 days</li>
-          <li>Any class on schedule</li>
-          <li>Free initial assessment</li>
-          <li>New students only</li>
-        </ul>
-        <a href="#visit" class="btn ghost">Start here</a>
-      </div>
-      <div class="price-card feat">
-        <h3>8-class pack</h3>
-        <div class="price">$240</div>
-        <ul>
-          <li>$30 / class</li>
-          <li>Valid 90 days</li>
-          <li>Priority booking window</li>
-          <li class="gold">Most members start here</li>
-        </ul>
-        <a href="#visit" class="btn primary" style="background: white; color: var(--accent);">Buy pack</a>
-      </div>
-      <div class="price-card">
-        <h3>Unlimited monthly</h3>
-        <div class="price">$295<small>/mo</small></div>
-        <ul>
-          <li>Unlimited classes</li>
-          <li>Cancel anytime</li>
-          <li>2 guest passes / month</li>
-          <li>Bring a friend free Sat</li>
-        </ul>
-        <a href="#visit" class="btn ghost">Go unlimited</a>
-      </div>
+    <div class="sched-row">
+      <div><strong>Mon</strong> 7:00a</div>
+      <div class="class-name">Reformer Foundations</div>
+      <div class="teacher">Elena</div>
+      <div class="spots">2 left</div>
     </div>
-  </section>
+    <div class="sched-row">
+      <div><strong>Mon</strong> 6:30p</div>
+      <div class="class-name">Reformer Intermediate</div>
+      <div class="teacher">Marc</div>
+      <div class="spots full">Full</div>
+    </div>
+    <div class="sched-row">
+      <div><strong>Wed</strong> 9:00a</div>
+      <div class="class-name">Reformer + Tower</div>
+      <div class="teacher">Elena &middot; Sasha</div>
+      <div class="spots">4 left</div>
+    </div>
+    <div class="sched-row">
+      <div><strong>Wed</strong> 12:00p</div>
+      <div class="class-name">Lunchtime Quick Flow</div>
+      <div class="teacher">Marc</div>
+      <div class="spots">3 left</div>
+    </div>
+    <div class="sched-row">
+      <div><strong>Sat</strong> 10:00a</div>
+      <div class="class-name">Slow Saturday</div>
+      <div class="teacher">Sasha</div>
+      <div class="spots">5 left</div>
+    </div>
+  </div>
+</section>
 
-  <section>
-    <div class="eyebrow">Your instructors</div>
-    <h2>The reason <em>members stay</em>.</h2>
-    <div class="instructors">
-      <div class="teacher-card">
-        <div class="teacher-photo"></div>
+<blockquote class="pull-quote">
+  <p>&ldquo;I came in with a decade-old hip thing I'd given up on. After eight sessions with Elena, I ran a 5K for the first time since my twenties.&rdquo;</p>
+  <cite>Jamie S., Hudson, member since 2022</cite>
+</blockquote>
+
+<section id="pricing">
+  <span class="eyebrow">Investment</span>
+  <h2>No contracts.<br><em>No autopay traps.</em></h2>
+
+  <div class="pricing-lead">
+    <div>
+      <h3>Intro 3-pack</h3>
+      <p class="pl-desc">3 classes in 30 days. Any class on the schedule. Free initial body assessment included. The simplest way to see if we're the right fit.</p>
+    </div>
+    <div class="pl-action">
+      <span class="pl-price">$59</span>
+      <a class="btn primary" href="#visit">Book intro</a>
+      <span class="pl-note">New students only</span>
+    </div>
+  </div>
+
+  <div class="plan-row">
+    <div>
+      <h4>8-class pack</h4>
+      <p class="plan-details">$30 per class &middot; Valid 90 days &middot; Priority booking window</p>
+    </div>
+    <span class="plan-price">$240</span>
+  </div>
+  <div class="plan-row">
+    <div>
+      <h4>Unlimited monthly</h4>
+      <p class="plan-details">Cancel anytime &middot; 2 guest passes per month &middot; Bring a friend free Saturdays</p>
+    </div>
+    <span class="plan-price">$295<small>/mo</small></span>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Your instructors</span>
+  <h2>The reason <em>members stay.</em></h2>
+  <div class="team">
+    <div class="team-member">
+      <div>
         <h3>Elena Marsh</h3>
-        <div class="role">Founder · Studio Lead</div>
-        <p>Classically trained at Romana's. Former dancer with NYCB. Specializes in postpartum rehab.</p>
+        <span class="role">Founder &middot; Studio Lead</span>
       </div>
-      <div class="teacher-card">
-        <div class="teacher-photo"></div>
+      <p>Classically trained at Romana's Pilates. Former dancer with New York City Ballet. Fifteen years of teaching, specializing in postpartum rehab and injury recovery. The person who built this studio from an empty carriage house and a single reformer.</p>
+    </div>
+    <div class="team-member">
+      <div>
         <h3>Marc Reyes</h3>
-        <div class="role">Senior Instructor</div>
-        <p>Comes from a PT background. The instructor your stubborn back has been waiting for.</p>
+        <span class="role">Senior Instructor</span>
       </div>
-      <div class="teacher-card">
-        <div class="teacher-photo"></div>
+      <p>Comes from a physical therapy background. The instructor your stubborn back has been waiting for. Teaches the Monday evening and Wednesday lunch sessions.</p>
+    </div>
+    <div class="team-member">
+      <div>
         <h3>Sasha Lin</h3>
-        <div class="role">Instructor</div>
-        <p>Teaches the most gentle, most beloved Saturday morning class in Columbia County.</p>
+        <span class="role">Instructor</span>
       </div>
+      <p>Teaches the most gentle, most beloved Saturday morning class in Columbia County. Her Wednesday tower sessions sell out by Tuesday.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="visit">
-    <div class="visit">
-      <div class="eyebrow" style="color: #e8d4a8;">Come by</div>
-      <h2>Start with the <em>$59 intro 3-pack</em>.</h2>
-      <p>No commitment. We'll meet you, do a quick body assessment, then put you on the reformer. Same-day intros possible if a spot is open.</p>
-      <a href="mailto:hello@riversidepilates.example" class="btn primary">Email to book →</a>
-    </div>
-  </section>
+<section id="visit" class="visit-section">
+  <span class="eyebrow">Come in</span>
+  <h2>Start with the <em>$59 intro.</em></h2>
+  <p class="visit-lede">No commitment. We'll meet you, do a quick body assessment, then put you on the reformer. Same-day intros possible if a spot is open.</p>
+  <a class="btn primary" href="mailto:hello@riversidepilates.example">Email to book &rarr;</a>
+  <span class="visit-note">14 Front St, Hudson NY &middot; hello@riversidepilates.example &middot; (518) 555-0119</span>
+</section>
 
-  <footer>
-    <div>Riverside Pilates · 14 Front St, Hudson NY · (518) 555-0119</div>
-    <div>Mon–Sat · hello@riversidepilates.example</div>
-  </footer>
+<footer>
+  <div>Riverside Pilates &middot; 14 Front St, Hudson NY &middot; (518) 555-0119</div>
+  <div>Mon&ndash;Sat &middot; hello@riversidepilates.example</div>
+</footer>
 
-</div>
 </body>
 </html>
